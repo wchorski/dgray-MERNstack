@@ -2,41 +2,42 @@ version: '3'
 
 services:
 
-  # server:
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./server
-  #     dockerfile: Dockerfile
-  #     args:
-  #       NODE_ENV: development
-  #   ports:
-  #     - "3001:3001"
-  #   volumes:
-  #     - ./server:/app
-  #     - /app/node_modules
-  #   environment: 
-  #     - PORT=3001 # MUST match with External port above ^
-  #     - DATABASE_URI=mongo
-  #     - DATABASE_PORT=27017
-  #     - MONGO_USER=sanjeev
-  #     - MONGO_PASS=mypassword
-  #     - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
-  #     - ACCESS_TOKEN_SECRET=myAccessTokenSecret   
-  #   depends_on:
-  #     - mongo
-  #   networks:
-  #     - dgray-MERNstack-network
+  server:
+    container_name: server-express
+    restart: unless-stopped
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - PORT=3001 # MUST match with External port above ^
+      - DATABASE_URI=mongo
+      - DATABASE_PORT=27017
+      - MONGO_USER=mymongouser
+      - MONGO_PASS=mypassword
+      - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
+      - ACCESS_TOKEN_SECRET=myAccessTokenSecret
+    depends_on:
+      - mongo
+    networks:
+      - dgray-network
 
   mongo:
+    restart: unless-stopped
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=sanjeev
+      - MONGO_INITDB_ROOT_USERNAME=mymongouser
       - MONGO_INITDB_ROOT_PASSWORD=mypassword
     volumes:
       - ./db/mongo-db:/data/db
     networks:
-      - dgray-MERNstack-network
-
+      - dgray-network
   # nginx:
   #   restart: always
   #   depends_on:
@@ -48,30 +49,31 @@ services:
   #   ports:
   #     - 4012:80
   #   networks:
-  #     - dgray-MERNstack-network
+  #     - dgray-network
 
-  # client:
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./client
-  #     dockerfile: Dockerfile
-  #     args:
-  #       NODE_ENV: development
-  #   volumes:
-  #     - ./client:/app
-  #     - /app/node_modules
-  #   ports:
-  #     - 3000:3000
-  #   environment:
-  #     - API_IP=http://localhost
-  #     - API_PORT=3001 # MUST match API external port
-  #   depends_on:
-  #     - server
-  #   networks:
-  #     - dgray-MERNstack-network
+  client:
+    container_name: client-react
+    restart: unless-stopped
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP__API_IP=http://localhost # any react env must start with REACT_APP_
+      - REACT_APP__API_PORT=3001 # MUST match API external port
+    depends_on:
+      - server
+    networks:
+      - dgray-network
 
 networks:
-  dgray-MERNstack-network:
+  dgray-network:
     driver: bridge
 
 volumes:

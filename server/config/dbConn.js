@@ -9,14 +9,14 @@ const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASS}@${DATABASE_URI}:${DATABA
 console.log(mongoURL);
 
 const connectDB = async () => {
-    try {
-        await mongoose.connect(mongoURL, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true
-        });
-    } catch (err) {
-        console.error(err);
-    }
+  try {
+    await mongoose.connect(mongoURL, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 

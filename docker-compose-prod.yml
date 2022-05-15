@@ -14,14 +14,14 @@ services:
     volumes:
       - ./server:/app
       - /app/node_modules
-    environment: 
+    environment:
       - PORT=3001 # MUST match with External port above ^
       - DATABASE_URI=mongo
       - DATABASE_PORT:27017
       - MONGO_USER=myMongoUser
       - MONGO_PASS=myMongoPass
       - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
-      - ACCESS_TOKEN_SECRET=myAccessTokenSecret    
+      - ACCESS_TOKEN_SECRET=myAccessTokenSecret
     depends_on:
       - mongo
     networks:
@@ -64,8 +64,8 @@ services:
     ports:
       - 4010:3000
     environment:
-      - API_IP=http://localhost
-      - API_PORT=4011 #MUST match API external port 
+      - REACT_APP__API_IP=http://localhost
+      - REACT_APP__API_PORT=4011 #MUST match API external port 
     depends_on:
       - server-express
     networks:

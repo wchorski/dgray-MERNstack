@@ -1,13 +1,14 @@
 import axios from 'axios';
 // const BASE_URL = 'http://localhost:3001';
 
-const BASE_URL = `${process.env.API_IP}:${process.env.API_PORT}`
+const BASE_URL = `${process.env.REACT_APP__API_IP}:${process.env.REACT_APP__API_PORT}`
+console.log(BASE_URL);
 export default axios.create({
-    baseURL: BASE_URL
+  baseURL: BASE_URL
 });
 
 export const axiosPrivate = axios.create({
-    baseURL: BASE_URL,
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true
+  baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true
 });
