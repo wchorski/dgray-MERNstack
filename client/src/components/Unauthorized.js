@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { GiStopSign } from 'react-icons/gi'
 
 const Unauthorized = () => {
     const navigate = useNavigate();
@@ -7,9 +8,10 @@ const Unauthorized = () => {
 
     return (
         <section>
-            <h1>Unauthorized</h1>
+            <h1>Unauthorized </h1>
+            <GiStopSign />
             <br />
-            <p>You do not have access to the requested page.</p>
+            <p>You need elevated permissions to view this page page.</p>
             <div className="flexGrow">
                 <button onClick={goBack}>Go Back</button>
             </div>

@@ -23,12 +23,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; 
-  padding: 1rem 0.5rem;
 }
 
 section {
     width: 100%;
-    max-width: 420px;
+    max-width: 820px;
     min-height: 400px;
     display: flex;
     flex-direction: column;
@@ -122,4 +121,16 @@ li {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+}
+
+.loadingicon{
+  font-size: 5rem;
+  color: whitesmoke;
+  filter: drop-shadow(rgba(0, 0, 0, 0.502) 1px 4px 3px);
+  animation: spin 1s linear 2s infinite forwards;
+}
+
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "15tut": "file:server",
-    "react_login": "file:client"
-  }
-}

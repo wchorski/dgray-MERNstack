@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import Navbar from "../components/Navbar"
 
 const Editor = () => {
     return (
+      <>
+        <Navbar />
         <section>
             <h1>Editors Page</h1>
             <br />
@@ -10,6 +13,7 @@ const Editor = () => {
                 <Link to="/">Home</Link>
             </div>
         </section>
+      </>
     )
 }
 

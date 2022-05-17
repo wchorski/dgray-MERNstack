@@ -1,13 +1,16 @@
+import Layout from './components/Layout';
+import { LoginPersist } from './components/LoginPersist';
+
+import Missing from './views/Missing';
+import Editor from './views/Editor';
+import Home from './views/Home';
+import Admin from './views/Admin';
+import Lounge from './views/Lounge';
+import LinkPage from './views/LinkPage';
+
 import Register from './components/Register';
 import Login from './components/Login';
-import Home from './components/Home';
-import Layout from './components/Layout';
-import Editor from './components/Editor';
-import Admin from './components/Admin';
-import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
-import Lounge from './components/Lounge';
-import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 
@@ -23,31 +26,31 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* public routes */}
+        <Route path="/" element={<Home username='derik'/>} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="linkpage" element={<LinkPage />} />
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
-        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
-          <Route path="/" element={<Home />} />
-        </Route>
+        <Route element={<LoginPersist />}>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
-          <Route path="editor" element={<Editor />} />
-        </Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+            <Route path="/editor" element={<Editor />} />
+          </Route>
 
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-          <Route path="admin" element={<Admin />} />
-        </Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+            <Route path="/admin" element={<Admin />} />
+          </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
-          <Route path="lounge" element={<Lounge />} />
+          <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin, ROLES.User]} />}>
+            <Route path="/lounge" element={<Lounge />} />
+          </Route>
         </Route>
 
         {/* catch all */}
-        <Route path="*" element={<Missing />} />
+        <Route path="/*" element={<Missing />} />
       </Route>
     </Routes>
   );

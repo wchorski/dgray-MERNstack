@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import Navbar from "../components/Navbar"
 
 const Missing = () => {
     return (
+      <>
+        <Navbar />
         <article style={{ padding: "100px" }}>
             <h1>Oops!</h1>
             <p>Page Not Found</p>
@@ -9,6 +12,7 @@ const Missing = () => {
                 <Link to="/">Visit Our Homepage</Link>
             </div>
         </article>
+      </>
     )
 }
 
