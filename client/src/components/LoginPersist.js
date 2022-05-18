@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ImSpinner9 } from 'react-icons/im'
+
 import useRefreshToken  from '../hooks/useRefreshToken'
 import useAuth from '../hooks/useAuth'
-import { ImSpinner9 } from 'react-icons/im'
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const LoginPersist = () => {
   const [isLoading, setisLoading] = useState(true)
   const refresh = useRefreshToken()
-  const { auth, persist } = useAuth()
+  const { auth } = useAuth()
+  const [persist] = useLocalStorage('persist', false)
 
   useEffect(() => {
     let isMounted = true

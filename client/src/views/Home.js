@@ -11,8 +11,7 @@ const Home = (props, req, res) => {
       <section>
         <h1>Welcome Home</h1>
         <br />
-        <Link to="/login">login</Link>
-        <Link to="/links">links</Link>
+        <Link to="/linkpage">links</Link>
         <br />
         <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
         <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
