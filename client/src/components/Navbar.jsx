@@ -20,9 +20,9 @@ const Navbar = () => {
   const [username, setUsername] = useState('--usernm--')
 
   useEffect((req, res) => {
-    console.log(Cookies.get('username'));
+    // console.log(Cookies.get('username'));
     setUsername(Cookies.get('username'))
-    console.log('---navbar.jsx');
+    // console.log('---navbar.jsx');
   }, [])
 
   // const logoutOld = async () => {

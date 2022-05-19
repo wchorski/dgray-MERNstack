@@ -3,10 +3,14 @@ import styled from 'styled-components'
 
 export const StyledNavSub = styled.nav`
 
-background-color: #1a1a22;
-box-shadow: #0000008a 3px 3px 5px;
+  background-color: #1a1a22;
+  box-shadow: #0000008a 3px 3px 5px;
 
   width: 100%;
+  margin-bottom: .5rem;
+
+  position: fixed;
+  top: 3.4rem;
 
   button{
     margin: 0;

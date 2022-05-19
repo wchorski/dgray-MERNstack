@@ -31,8 +31,8 @@ export const LoginPersist = () => {
   }, [])
 
   useEffect(() => {
-    console.log(`isLoading: ${isLoading}`);
-    console.log(`accessToken: ${JSON.stringify(auth?.accessToken)}`);
+    // console.log(`isLoading: ${isLoading}`);
+    // console.log(`accessToken: ${JSON.stringify(auth?.accessToken)}`);
   }, [isLoading])
 
 

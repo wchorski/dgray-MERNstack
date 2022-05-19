@@ -12,8 +12,8 @@ const Admin = () => {
         <section>
             <h1>Admins Page</h1>
             <br />
-            <Users />
-            {/* <UserTable /> */}
+            {/* <Users /> */}
+            <UserTable />
             <br />
             <div className="flexGrow">
                 <Link to="/">Home</Link>

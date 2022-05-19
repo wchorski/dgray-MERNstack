@@ -1,4 +1,6 @@
 import Layout from './components/Layout';
+import { Routes, Route } from 'react-router-dom';
+
 import { LoginPersist } from './components/LoginPersist';
 
 import Missing from './views/Missing';
@@ -12,12 +14,12 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth';
-import { Routes, Route } from 'react-router-dom';
+import { User } from './views/User';
 
 const ROLES = {
-  'User': 2001,
+  'Admin': 5150,
   'Editor': 1984,
-  'Admin': 5150
+  'User': 2001,
 }
 
 function App() {
@@ -42,6 +44,7 @@ function App() {
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="/admin" element={<Admin />} />
+            <Route path="/users/:_id" element={<User />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin, ROLES.User]} />}>

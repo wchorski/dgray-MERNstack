@@ -34,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // built-in middleware for json 
 app.use(express.json());
+app.set('json spaces', 2) //? prettyfiy json in browser
 
 //middleware for cookies
 app.use(cookieParser());

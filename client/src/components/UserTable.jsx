@@ -11,29 +11,31 @@ import { format } from 'date-fns'
 import { StyledGigTable } from '../styles/GigTable.styled'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
 
 
 export const UserTable = () => {
 
-  const [users, setUsers] = useState();
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
-
-  let isMounted = true;
   const controller = new AbortController();
 
-  const getUsers = async () => {
 
-    
+  const [users, setUsers] = useState([]);
+
+  let isMounted = true;
+
+
+  const getUsers = async () => {
     try {
       console.log('--- Users - getUsers.js');
       const response = await axiosPrivate.get('/users', {
         signal: controller.signal
       });
-      console.log(response.data);
 
-      isMounted && setUsers(response.data);
+      const newArr = destructArray(response.data)
+      setUsers(newArr);
 
     } catch (err) {
       console.log('---getUsers failed');
@@ -42,11 +44,45 @@ export const UserTable = () => {
     }
   }
 
+  const destructArray = (array) => {
+    // TODO destruct array.push prettied objects back to array
+    let prettyArr = []
+    
+    array.map(user => {
+      let prettyUser = {
+        username: user.username,
+        roles: whatRole(user),
+        _id: user._id
+      }
+      prettyArr.push(prettyUser)
+    })
+
+    return prettyArr
+  }
+
+  const whatRole = (obj) => {
+
+    const {roles: { Admin, Editor, User }} = obj 
+    if(Admin){
+      return 'Admin';
+
+    } else if(Editor){
+      return 'Editor';
+
+    } else if(User){
+      return 'User';
+
+    } else {
+      return 'this user is a NOBODY';
+    }  
+  }
+
+
   useEffect(() => {
-    console.log('---users.js -- useEffect');
+    // console.log('---users.js -- useEffect');
 
 
-    getUsers();
+    getUsers()
 
     return () => {
       isMounted = false;
@@ -55,6 +91,8 @@ export const UserTable = () => {
   }, [])
 
 
+  //? TABLE #################################
+  //? TABLE #################################
   //? TABLE #################################
   const usersColumns = [
     {
@@ -68,11 +106,6 @@ export const UserTable = () => {
       accessor: 'roles',
     },
     {
-      Header: 'Password',
-      Footer: 'Password',
-      accessor: 'password'
-    },
-    {
       Header: 'ID',
       Footer: 'ID',
       accessor: '_id'
@@ -84,14 +117,26 @@ export const UserTable = () => {
 
   const tableInstance = useTable({
     columns: newColumns,
-    data: users //* this was using 'newData'
+    data: users
 
   }, useSortBy)
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, footerGroups } = tableInstance
 
   return (
+
     <>
-      <h2>UserTable.jsx</h2>
+      {/* <button onClick={() => getUsers}>Refresh User List</button> */}
+
+      {/* {users.map((user, i) => {
+        return(
+          <ul key={i}>
+            <li>{user.username}</li>
+            <li>{user._id}</li>
+            <li>{whatRole(user)}</li>
+          </ul>
+        )
+      })} */}
+      
       <StyledGigTable>
         <button onClick={getUsers}>refresh users <GrRefresh /></button>
 
@@ -107,7 +152,7 @@ export const UserTable = () => {
                     <th {...column.getHeaderProps(column.getSortByToggleProps())} key={i}>
                       {column.render('Header')}
                       <span>
-                        {column.isSorted ? (column.isSortedDesc ? ' ↥' : ' ↧') : ''}
+                        {column.isSorted ? (column.isSortedDesc ? <FaSortAmountUp />  : <FaSortAmountDownAlt />) : ''}
                       </span>
                     </th>
                   ))}
@@ -126,8 +171,8 @@ export const UserTable = () => {
                         <td {...cell.getCellProps()}> {cell.render('Cell')}</td>
                       )
                     })}
+
                     <td><Link to={`/users/${row.values._id}`}> account </Link> </td>
-                    {/* <a href={`/api/v1/engagements/${row.values._id}`}>account</a>  */}
                   </tr>
                 )
               })}

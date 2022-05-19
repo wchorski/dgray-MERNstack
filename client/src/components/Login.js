@@ -41,9 +41,7 @@ const Login = () => {
             withCredentials: true
           }
         );
-        // console.log('----login.js');
-        // console.log(response?.data);
-        // console.log(JSON.stringify(response?.data));
+
         const accessToken = response?.data?.accessToken;
         const roles = response?.data?.roles;
         setAuth({ user, pwd, roles, accessToken });
@@ -119,6 +117,8 @@ const Login = () => {
                 <span className="line">
                     <Link to="/register">Sign Up</Link>
                 </span>
+                <br />
+                <Link to="/">Home</Link>
             </p>
         </section>
 

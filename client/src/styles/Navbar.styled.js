@@ -6,6 +6,8 @@ export const StyledNavBar = styled.nav`
   width: 100%;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 0;
 
   a:hover{
     opacity: .2;

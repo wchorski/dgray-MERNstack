@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTable, useSortBy } from 'react-table'
+
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { format } from 'date-fns'
+import { StyledGigTable } from '../styles/GigTable.styled'
 
 const Users = () => {
 
-
-
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,9 +17,7 @@ const Users = () => {
   const controller = new AbortController();
 
 
-  const getUsers = async () => {
-
-    
+  const getUsers = async () => {    
     try {
       console.log('--- Users - getUsers.js');
       const response = await axiosPrivate.get('/users', {
@@ -46,6 +46,40 @@ const Users = () => {
     }
   }, [])
 
+  //? TABLE #################################
+  const usersColumns = [
+    {
+      Header: 'Username',
+      Footer: 'Username',
+      accessor: 'username',
+    },
+    {
+      Header: 'Role',
+      Footer: 'Role',
+      accessor: 'roles',
+    },
+    {
+      Header: 'Password',
+      Footer: 'Password',
+      accessor: 'password'
+    },
+    {
+      Header: 'ID',
+      Footer: 'ID',
+      accessor: '_id'
+    },
+  ]
+  const newColumns = useMemo(() => usersColumns, []) 
+  const tableInstance = useTable({
+    columns: newColumns,
+    data: users //* this was using 'newData'
+
+  }, useSortBy)
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, footerGroups } = tableInstance
+
+
+
+
   return (
     <article>
       <h2>Users List</h2>
@@ -53,6 +87,8 @@ const Users = () => {
         ? (
           <ul>
             {users.map((user, i) => <li key={i}>{user?.username}</li>)}
+            {users.map((user, i) => <li key={i}>{user?._id}</li>)}
+            {users.map((user, i) => <li key={i}>{user?.roles.User}</li>)}
           </ul>
         ) 
         : <p>No users to display</p>

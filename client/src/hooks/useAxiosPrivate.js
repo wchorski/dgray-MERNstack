@@ -7,9 +7,9 @@ const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
     const { auth } = useAuth();
 
-    // console.log('---useAxiosPrivate');
 
     useEffect(() => {
+      // console.log('---axiosPrivate ');
 
       const requestIntercept = axiosPrivate.interceptors.request.use(
         config => {
