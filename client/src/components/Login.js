@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa'
+import { MdPassword } from 'react-icons/md'
 
 import { useInput } from '../hooks/useInput';
 import { useToggle } from '../hooks/useToggle';
@@ -72,14 +74,16 @@ const Login = () => {
 
     return (
 
+
+      <div className='content'>
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
+            <h1>Login</h1>
 
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='popUp'>
 
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username"><FaUserAlt /></label>
                 <input
                   type="text"
                   id="username"
@@ -87,15 +91,17 @@ const Login = () => {
                   autoComplete="off"
                   {...userAttributeObj}
                   required
+                  placeholder='username...'
                 />
 
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password"><MdPassword /></label>
                 <input
                   type="password"
                   id="password"
                   onChange={(e) => setPwd(e.target.value)}
                   value={pwd}
                   required
+                  placeholder='password...'
                 />
 
 
@@ -115,12 +121,13 @@ const Login = () => {
             <p>
                 Need an Account?<br />
                 <span className="line">
-                    <Link to="/register">Sign Up</Link>
+                    <Link to="/signup">Sign Up</Link>
                 </span>
                 <br />
                 <Link to="/">Home</Link>
             </p>
         </section>
+      </div>
 
     )
 }

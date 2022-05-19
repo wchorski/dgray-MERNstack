@@ -10,8 +10,9 @@ import Admin from './views/Admin';
 import Lounge from './views/Lounge';
 import LinkPage from './views/LinkPage';
 
-import Register from './components/Register';
+import Register from './components/Signup';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth';
 import { User } from './views/User';
@@ -29,10 +30,11 @@ function App() {
       <Route path="/" element={<Layout />}>
         {/* public routes */}
         <Route path="/" element={<Home username='derik'/>} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="linkpage" element={<LinkPage />} />
-        <Route path="unauthorized" element={<Unauthorized />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/signup" element={<Register />} />
+        <Route path="/linkpage" element={<LinkPage />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
         <Route element={<LoginPersist />}>

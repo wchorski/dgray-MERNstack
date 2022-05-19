@@ -9,7 +9,6 @@ import axios from '../api/axios'
 import { useLogout } from "../hooks/useLogout";
 import logo from '../logo.svg'
 import { StyledNavBar } from '../styles/Navbar.styled'
-import { StyledNavSub } from '../styles/NavSub.styled'
 
 const Navbar = () => {
 
@@ -20,45 +19,36 @@ const Navbar = () => {
   const [username, setUsername] = useState('--usernm--')
 
   useEffect((req, res) => {
-    // console.log(Cookies.get('username'));
     setUsername(Cookies.get('username'))
     // console.log('---navbar.jsx');
   }, [])
 
-  // const logoutOld = async () => {
-  //   let response = await axios.get('/logout').then(({ data }) => data)
-  //   Cookies.remove('username')
-  //   Cookies.remove('jwt')
-  //   setAuth({});
-  //   // navigate('/linkpage');
-  // }
-
   const signOut = async () => {
     await logout()
-    navigate('/');
+    navigate('/logout');
   }
 
 
   return (
     <>
       <StyledNavBar>
-        <a href="/">
-          <img src={logo} className="App-logo" alt="logo" />
-        </a>
-        <ul>
-          <li><a href="/"         > Home </a></li>
-          <li><a href="/login"    > Login </a></li>
-          <li><a href="/register" > Register </a></li>
-          <li><a href="/linkpage" > Linkpage </a></li>
+        <nav className="main">
+          <a href="/">
+            <img src={logo} className="App-logo" alt="logo" />
+          </a>
+          <ul>
+            <li><a href="/"         > Home </a></li>
+            <li><a href="/login"    > Login </a></li>
+            <li><a href="/linkpage" > Linkpage </a></li>
 
-          <li><a href="/editor"   > Editor </a></li>
-          <li><a href="/admin"    > Admin </a></li>
-          <li><a href="/lounge"   > Lounge </a></li>
-        </ul>
-      </StyledNavBar>
+            <li><a href="/editor"   > Editor </a></li>
+            <li><a href="/admin"    > Admin </a></li>
+            <li><a href="/lounge"   > Lounge </a></li>
+          </ul>
+        </nav>
 
 
-        <StyledNavSub>
+        <nav className="sub">
           <ul>
             <li><input type="text" placeholder="search..."/> <button><BiSearchAlt /> </button></li>
             {username && (  
@@ -68,7 +58,8 @@ const Navbar = () => {
               </li>
             )}
           </ul>
-        </StyledNavSub>
+        </nav>
+      </StyledNavBar>
       
     </>
   )
