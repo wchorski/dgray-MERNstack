@@ -16,6 +16,8 @@ import Logout from './components/Logout';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth';
 import { User } from './views/User';
+import Posts from './views/Posts';
+import PostSingle from './views/PostSingle';
 
 const ROLES = {
   'Admin': 5150,
@@ -34,6 +36,8 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/linkpage" element={<LinkPage />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/posts/:_id" element={<PostSingle />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}

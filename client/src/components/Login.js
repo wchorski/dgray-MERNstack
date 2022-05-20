@@ -113,7 +113,7 @@ const Login = () => {
                     onChange={toggleCheck}
                     checked={check}
                   />
-                  <label htmlFor='persist'> Keep me Logged into this computer </label>
+                  <label htmlFor='persist'> <i>Keep me Logged into this computer </i></label>
                 </div>
             </form>
 
@@ -127,6 +127,18 @@ const Login = () => {
                 <Link to="/">Home</Link>
             </p>
         </section>
+        <h3>Admin</h3>
+        <p>username: User01</p>
+        <p>password User0!!</p>
+        <br />
+        <h3>Editor</h3>
+        <p>username: User02</p>
+        <p>password User02!!</p>
+        <br />
+        <h3>User / Subscriber</h3>
+        <p>username: User03</p>
+        <p>password User03!!</p>
+        <br />
       </div>
 
     )
