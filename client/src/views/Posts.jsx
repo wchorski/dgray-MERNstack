@@ -1,14 +1,19 @@
 import {React, useState, useEffect} from 'react'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
-import axios from '../api/axios'
-import Post from '../components/Post'
+import {BsPlusSquare} from 'react-icons/bs'
+
 import { StyledPostsList } from '../styles/PostsList.styled'
+import Navbar from '../components/Navbar'
+import Post from '../components/Post'
+
+import axios from '../api/axios'
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 
 const Posts = () => {
 
   const [postsArray, setPosts] = useState([]);
-  // const axiosPrivate = useAxiosPrivate();
+  const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,7 +23,7 @@ const Posts = () => {
   const getPosts = async () => {    
     try {
 
-      const response = await axios.get('/posts', {
+      const response = await axiosPrivate.get('/posts', {
         signal: controller.signal
       });
 
@@ -43,20 +48,25 @@ const Posts = () => {
 
 
   return (
-    <section>
-      <h1>Posts</h1>
-      <StyledPostsList>
-        {postsArray.map((post, i) => (
-          <article className='excerpt' key={i}>
+    <>
+      <Navbar />
+      <section>
+        <h1>Posts</h1> <Link to={`/posts/create`} className='createPost'><BsPlusSquare /> <span>Create Post</span></Link>
+        {/* //TODO this doesn't actually lock out info, just makes it convienent to read */}
+        <span><i>* Login to read full posts</i></span>
+        <StyledPostsList>
+          {postsArray.slice().reverse().map((post) => (
+            <article className='excerpt' key={post._id}>
 
-            <Post {...post}/>
-            <Link to={`/posts/${post._id}`} className='readmore'> Read More... </Link> 
+              <Post {...post}/>
+              <Link to={`/posts/${post._id}`} className='readmore'> Read More... </Link> 
 
 
-          </article>
-        ))}
-      </StyledPostsList>
-    </section>
+            </article>
+          ))}
+        </StyledPostsList>
+      </section>
+    </>
   )
 }
 

@@ -5,13 +5,13 @@ import { useTable, useSortBy } from 'react-table'
 import { Link } from 'react-router-dom'
 import { FaSortAmountUp,  FaSortAmountDownAlt} from 'react-icons/fa'
 import { GrRefresh } from 'react-icons/gr'
+import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
 
 // import mock_data from './mock_data.json'
 import { format } from 'date-fns'
 import { StyledGigTable } from '../styles/GigTable.styled'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
 
 
 export const UserTable = () => {
@@ -126,16 +126,6 @@ export const UserTable = () => {
 
     <>
       {/* <button onClick={() => getUsers}>Refresh User List</button> */}
-
-      {/* {users.map((user, i) => {
-        return(
-          <ul key={i}>
-            <li>{user.username}</li>
-            <li>{user._id}</li>
-            <li>{whatRole(user)}</li>
-          </ul>
-        )
-      })} */}
       
       <StyledGigTable>
         <button onClick={getUsers}>refresh users <GrRefresh /></button>

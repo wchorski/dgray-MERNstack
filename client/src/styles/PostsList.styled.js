@@ -32,6 +32,7 @@ export const StyledPostsList = styled.div`
     
 
     p{
+      // background-color: green;
       margin-top: 1rem;
       
       overflow: hidden;

@@ -15,9 +15,10 @@ const Post = (props) => {
 
   return (
     <>
-      <h3>{props.title}</h3>
+      <h3 className='title'>{props.title}</h3>
       <span className='author'><BsFillPencilFill /> {props.author}</span>
-      <p>{props.content}</p>
+
+      <p className="content">{props.content}</p>
     </>
   )
 }

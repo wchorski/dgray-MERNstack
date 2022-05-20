@@ -7,6 +7,7 @@ export const StyledNavBar = styled.div`
   position: sticky;
   top: 0rem;
   margin-bottom: 1rem;
+  z-index: 500;
   
   nav.main{
     display: flex;
@@ -61,7 +62,7 @@ export const StyledNavBar = styled.div`
     box-shadow: #0000008a 3px 3px 5px;
 
     width: 100%;
-    margin-bottom: .5rem;
+    // margin-bottom: .5rem;
 
     // position: fixed;
     top: 3.4rem;

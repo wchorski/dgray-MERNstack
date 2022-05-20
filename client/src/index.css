@@ -25,7 +25,7 @@ body {
   /* min-height: 100vh;  */
 }
 
-.content{
+.innerbody{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -166,4 +166,34 @@ ul{
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: black dotted 1px;
+}
+
+.createPost{
+  background-color: white;
+  color: blue;
+  border: solid blue 3px;
+  border-radius: 50px;
+  padding: .1rem 1rem;
+  margin-bottom: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  width: 10rem;
+  transition: .2s;
+}
+
+.createPost:hover{
+  background-color: blue;
+  color: white;
+  border: dashed white;
+}
+.createPost span{
+  color: blue;
+  margin-left: .7rem;
+}
+.createPost svg{
+  color: blue;
+
 }

@@ -82,7 +82,7 @@ const Register = () => {
     }
 
     return (
-      <div className='content'>
+      <div className='innerbody'>
           {success ? (
               <section>
                   <h1>Success!</h1>
