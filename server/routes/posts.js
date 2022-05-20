@@ -5,17 +5,12 @@ const ROLES_LIST = require('../config/roles_list');
 const verifyRoles = require('../middleware/verifyRoles');
 
 router.route('/')
-  .get(postCont.getAllPosts)
-  .delete( postCont.deletePost)
-  .post(postCont.createPost)
-  // .get(verifyRoles(ROLES_LIST.User), postCont.getAllPosts)
-  // .delete(verifyRoles(ROLES_LIST.Editor), postCont.deletePost)
-  
+  .get(verifyRoles(ROLES_LIST.User), postCont.getAllPosts)
+  .post(verifyRoles(ROLES_LIST.Editor), postCont.createPost)
 
 router.route('/:id')
-  .get(postCont.getPost)
-  .delete(postCont.deletePost)
-  // .get(verifyRoles(ROLES_LIST.User), postCont.getPost)
-  // .delete(verifyRoles(ROLES_LIST.Editor), postCont.deletePost)
+  .get(verifyRoles(ROLES_LIST.User), postCont.getPost)
+  // TODO update permission for Editor
+  .delete(verifyRoles(ROLES_LIST.Admin), postCont.deletePost)
 
 module.exports = router;

@@ -1,48 +1,62 @@
 [
   {
-    "_id": "62879cdaf8977d736fd4f249",
+    "_id": {
+      "$oid": "62879cdaf8977d736fd4f249"
+    },
     "title": "Title One",
     "author": "UserOne",
     "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe laborum consequatur possimus repellendus quos. Repellat debitis, quaerat enim incidunt eligendi sint aliquam eos voluptates beatae mollitia? Quo voluptate officiis voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe laborum consequatur possimus repellendus quos. Repellat debitis, quaerat enim incidunt eligendi sint aliquam eos voluptates beatae mollitia? Quo voluptate officiis voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe laborum consequatur possimus repellendus quos. Repellat debitis, quaerat enim incidunt eligendi sint aliquam eos voluptates beatae mollitia? Quo voluptate officiis voluptatum?",
     "__v": 0
   },
   {
-    "_id": "62879ceef8977d736fd4f24b",
+    "_id": {
+      "$oid": "62879ceef8977d736fd4f24b"
+    },
     "title": "Title two",
     "author": "UserTwo",
     "content": "This is the content of the post",
     "__v": 0
   },
   {
-    "_id": "62879f0cf8977d736fd4f24e",
+    "_id": {
+      "$oid": "62879f0cf8977d736fd4f24e"
+    },
     "title": "Title three",
     "author": "UserThree",
     "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsam nihil ullam quis nisi qui, culpa quod est pariatur dolorem consequuntur, ipsa omnis. Accusantium reiciendis fuga aliquid, recusandae quaerat possimus?",
     "__v": 0
   },
   {
-    "_id": "4",
+    "_id": {
+      "$oid": "62879f0cf8977d736fd4f244"
+    },
     "title": "Title four",
     "author": "Userfour",
     "content": "Lorem ipsum dolor sit amet   elit. Debitis ipsam  ullam quis  qui, culpa quod est pariatur dolorem consequuntur, ipsa omnis. Accusantium reiciendis fuga aliquid, recusandae quaerat possimus?",
     "__v": 0
   },
   {
-    "_id": "5",
+    "_id": {
+      "$oid": "62879f0cf8977d736fd4f245"
+    },
     "title": "Title five",
     "author": "UserFive",
     "content": "Lorem   sit amet   elit. Debitis   ullam   qui,  quod  pariatur dolorem consequuntur, ipsa omnis. Accusantium reiciendis fuga aliquid, recusandae quaerat possimus?",
     "__v": 0
   },
   {
-    "_id": "6",
+    "_id": {
+      "$oid": "62879f0cf8977d736fd4f246"
+    },
     "title": "Title six",
     "author": "User6",
     "content": "   sit    elit. Debitis   ullam   qui,  quod    consequuntur, ipsa omnis. Accusantium reiciendis fuga aliquid, recusandae quaerat possimus?",
     "__v": 0
   },
   {
-    "_id": "7",
+    "_id": {
+      "$oid": "62879f0cf8977d736fd4f247"
+    },
     "title": "Title 7",
     "author": "User7",
     "content": "   sit    elit. Debitis   ullam   qui,  quod    consequuntur, ipsa omnis. Accusantium reiciendis fuga aliquid, recusandae quaerat possimus?",
