@@ -16,6 +16,18 @@ body {
     /* min-height: 100vh; */
     background-color: dodgerblue;
 }
+::-webkit-scrollbar {
+  width: 10px; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4e4e4e;
+  border-radius: 25px;
+}
 
 .App {
   display: flex;

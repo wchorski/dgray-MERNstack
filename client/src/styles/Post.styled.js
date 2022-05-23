@@ -1,4 +1,9 @@
+import { useEffect } from 'react';
+
+import { FaLessThan } from 'react-icons/fa';
 import styled from 'styled-components'
+
+
 
 
 export const StyledPost = styled.div`
@@ -32,6 +37,14 @@ export const StyledPost = styled.div`
     margin-top: 1rem;
     padding-top: 1rem;
     
+  }
+  textarea{
+    width: 100%;
+    max-width: 100%;
+    min-height: 20rem;
+    height: inherit;
+    height: 30px;
+    resize: vertical;
   }
 
   .editBtns{

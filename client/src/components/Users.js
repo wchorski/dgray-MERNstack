@@ -59,11 +59,6 @@ const Users = () => {
       accessor: 'roles',
     },
     {
-      Header: 'Password',
-      Footer: 'Password',
-      accessor: 'password'
-    },
-    {
       Header: 'ID',
       Footer: 'ID',
       accessor: '_id'

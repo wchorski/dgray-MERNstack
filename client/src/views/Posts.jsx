@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {BsPlusSquare} from 'react-icons/bs'
 
 import { StyledPostsList } from '../styles/PostsList.styled'
@@ -12,10 +13,11 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Posts = () => {
 
-  const [postsArray, setPosts] = useState([]);
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
+  const [postsArray, setPosts] = useState([]);
+  const [roleState, setroleState] = useState('');
 
   // let isMounted = true;
   const controller = new AbortController();
@@ -39,6 +41,7 @@ const Posts = () => {
   useEffect(() => {
 
     getPosts();
+    setroleState(Cookies.get('role')) 
 
     return () => {
       // isMounted = false;
@@ -51,9 +54,13 @@ const Posts = () => {
     <>
       <Navbar />
       <section>
-        <h1>Posts</h1> <Link to={`/posts/create`} className='createPost'><BsPlusSquare /> <span>Create Post</span></Link>
+        <h1>Posts</h1> 
+        {roleState === 'admin' || roleState === 'editor'  
+          ? <Link to={`/posts/create`} className='createPost'><BsPlusSquare /> <span>Create Post</span></Link>
+          : null
+        }
+
         {/* //TODO this doesn't actually lock out info, just makes it convienent to read */}
-        <span><i>* Login to read full posts</i></span>
         <StyledPostsList>
           {postsArray.slice().reverse().map((post) => (
             <article className='excerpt' key={post._id}>

@@ -11,6 +11,8 @@ router.route('/')
 router.route('/:id')
   .get(verifyRoles(ROLES_LIST.User), postCont.getPost)
   // TODO update permission for Editor
+  .patch(verifyRoles(ROLES_LIST.Editor), postCont.update)  
   .delete(verifyRoles(ROLES_LIST.Admin), postCont.deletePost)
 
+// TODO '/edit/:id' autofill editor with post to be updated
 module.exports = router;

@@ -15,6 +15,7 @@ export const useLogout = () => {
         withCredentials: true
       })
       Cookies.remove('username')
+      Cookies.remove('role')
     } catch (err) {
       console.error(err);
     }

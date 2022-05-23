@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react'
-import {useNavigate, useLocation, useParams} from 'react-router-dom'
+import {useNavigate, useLocation, useParams, Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
 import { FiEdit } from 'react-icons/fi'
 
@@ -13,14 +14,15 @@ import axios from '../api/axios'
 
 const PostSingle = () => {
 
-  const [postSingle, setPosts] = useState([]);
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
   let { _id } = useParams() //? params of react-router-dom previous lilnk URL
-
-  // let isMounted = true;
   const controller = new AbortController();
+  
+  const [postSingle, setPosts] = useState([]);
+  const [roleState, setroleState] = useState('');
+  // let isMounted = true;
 
   //* CRUD ######################################
   const getPost = async () => {    
@@ -39,9 +41,11 @@ const PostSingle = () => {
       navigate('/posts', { state: { from: location }, replace: true });
     }
   }
+
+
   const deletePost = async (_id) => {
     try {
-      axios.delete(`/posts/${_id}`).then(res => {
+      axiosPrivate.delete(`/posts/${_id}`).then(res => {
         console.log('Deleted!!!', res)
         navigate('/posts')
 
@@ -62,6 +66,8 @@ const PostSingle = () => {
 
     getPost();
 
+    setroleState(Cookies.get('role')) 
+
     return () => {
       // isMounted = false;
       controller.abort();
@@ -75,12 +81,14 @@ const PostSingle = () => {
 
         <StyledPost>
           <Post {...postSingle}/>
-          {/* //TODO ONLY SHOW IF YOU"RE AND EDITOR */}
 
-          <div className='editBtns'>
-            <button className='editBtn' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
-            <button className='editBtn' > <FiEdit /> </button>
-          </div>
+          {roleState === 'admin' || roleState === 'editor' ?  
+            <div className='editBtns'>
+              <button className='editBtn' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
+              <Link to={`/posts/editor/${_id}`}><FiEdit /></Link>
+            </div>
+          : null
+          }
         </StyledPost>
 
       </section>

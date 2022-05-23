@@ -16,51 +16,50 @@ const Home = (props, req, res) => {
         <br />
         <Jokes />
         <br />
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
-        <p><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /></p>
+        <p>
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+        </p>
 
 
       </section>

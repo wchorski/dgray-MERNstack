@@ -1,18 +1,21 @@
 import {React, useState } from 'react'
-import { useNavigate, Link, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useFormik, Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
 import { BsFillPencilFill } from 'react-icons/bs'
+
 import {StyledPopUp} from '../styles/popup.styled'
+import { StyledPost } from '../styles/Post.styled';
 
 import axios  from '../api/axios';
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
-import { StyledPost } from '../styles/Post.styled';
 // import Navbar from '../components/Navbar'
 
 const PostCreate = () => {
 
+  const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/posts";
@@ -20,14 +23,14 @@ const PostCreate = () => {
 
   const createPost = async (values) => {
 
-    console.log('new post');
+    console.log('new post posted');
     try{
 
-      let res = await axios.post('/posts', JSON.stringify( { ...values}), {
+      let res = await axiosPrivate.post('/posts', JSON.stringify( { ...values}), {
         headers: { 'Content-Type': 'application/json'},
         // withCredentials: true
       })
-      console.log(JSON.stringify(res?.data))
+      // console.log(JSON.stringify(res?.data))
       // const accessToken = res?.data?.accessToken
       // setAuth({...creds, accessToken})
 
@@ -53,6 +56,8 @@ const PostCreate = () => {
     }
   }
 
+  const updatePost = async () => {}
+
 
   const PostSchema = Yup.object().shape({
 
@@ -62,7 +67,7 @@ const PostCreate = () => {
       .max(20, '* Your Title too long!'),
     // TODO grab author from logged in user
     author: Yup.string().required('* Your author name required!').min(3, '* Your author name too short!').max(10, '* Your author name too long!'),
-    content: Yup.string().min(3, '* Your contentis too short!').max(300, '* Your content is too long!'),
+    content: Yup.string().min(3, '* Your contentis too short!').max(4000, '* Your content is too long!'),
 
   })
 
@@ -101,7 +106,7 @@ const PostCreate = () => {
                   <BsFillPencilFill />
                   <Field name="author" type="text" placeholder="author..." className='author'/>
                   {errors.author && touched.author ? (
-                    <span className='formErr'>{errors.password}</span>
+                    <span className='formErr'>{errors.author}</span>
                     ) : null}
                 </div>
 

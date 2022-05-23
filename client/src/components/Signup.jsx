@@ -1,14 +1,16 @@
 import { useRef, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import axios from '../api/axios';
-import { Link } from "react-router-dom";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
 const Register = () => {
+    const navigate = useNavigate();
     const userRef = useRef();
     const errRef = useRef();
 
@@ -69,6 +71,10 @@ const Register = () => {
             setUser('');
             setPwd('');
             setMatchPwd('');
+
+            navigate('/login')
+
+            
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
