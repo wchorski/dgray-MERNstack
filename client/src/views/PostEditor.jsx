@@ -9,6 +9,7 @@ import { AiFillStop } from 'react-icons/ai'
 
 import {StyledPopUp} from '../styles/popup.styled'
 import { StyledPost } from '../styles/Post.styled'
+import { sizeOnKeyStroke, sizeOnPageLoad } from '../helpers/textareaAutoSize'
 import Post from '../components/Post'
 import Navbar from '../components/Navbar'
 
@@ -16,41 +17,6 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from '../api/axios'
 
 const PostEditor = () => {
-
-  // * Text box resize #################################
-  document.addEventListener('input', function (event) {
-    if (event.target.tagName.toLowerCase() !== 'textarea') return;
-    // console.log(event.target);
-    autoExpand(event.target);
-  }, false);
-  let autoExpand = function (target) {
-  
-    // console.log(target);
-    // Reset target height
-    target.style.height = 'inherit';
-  
-    // Get the computed styles for the element
-    let computed = window.getComputedStyle(target);
-  
-    // Calculate the height
-    let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-                 + parseInt(computed.getPropertyValue('padding-top'), 10)
-                 + target.scrollHeight
-                 + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                 + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-  
-    target.style.height = height + 'px';
-  
-  }
-  
-  
-  const textAreaResize = () => {
-    const contentBoxes = document.getElementsByClassName('content')
-    if (!Array.isArray(contentBoxes) || !contentBoxes.length) {
-      contentBoxes[0].style.height = (contentBoxes[0].scrollHeight + 10)+'px'
-    }
-  }
-  // * Text box resize #################################
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
@@ -108,7 +74,7 @@ const PostEditor = () => {
     getPost();
   
     setTimeout(() => {
-      textAreaResize()
+      sizeOnPageLoad()
     }, 500)
 
     console.log(Cookies.get('role')) 
@@ -118,6 +84,7 @@ const PostEditor = () => {
       controller.abort();
     }
   }, [])
+  sizeOnKeyStroke()
 
  
   const PostSchema = Yup.object().shape({

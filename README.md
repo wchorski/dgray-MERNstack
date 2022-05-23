@@ -28,13 +28,17 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 
 ## Feature Wish List
+### posts
+[ ] 'PostCreate.jsx' autofill author as logged in user. make it permanent
 [x] User form to create posts
 [x] Only Allow Registered Users to view Single Post page (*working ish)
+[ ] non-users able to view list of post excerpts
 [ ] only get Posts excerpt so it actually locks content behind Sign Up
 [x] Delete button on Single Post. show only to Editors / Admins
 [x] Editor / Admin able to delete posts
-[ ] Admin able to edit user Roles
+### admin
 [ ] User Create Form
+[ ] Admin able to edit user Roles
 [ ] Admin form to create user with Roles
 [ ] inject inital Users data in the db on a fresh install
 [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)

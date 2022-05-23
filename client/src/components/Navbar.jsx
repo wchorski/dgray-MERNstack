@@ -37,14 +37,13 @@ const Navbar = () => {
             <img src={logo} className="App-logo" alt="logo" />
           </a>
           <ul>
-            <li><a href="/"         > Home </a></li>
-            <li><a href="/login"    > Login </a></li>
-            <li><a href="/linkpage" > Linkpage </a></li>
-            <li><a href="/posts" > Posts </a></li>
-
-            <li><a href="/editor"   > Editor </a></li>
-            <li><a href="/admin"    > Admin </a></li>
-            <li><a href="/lounge"   > Lounge </a></li>
+            <li><Link to="/"        > Home</Link></li>
+            <li><Link to="/posts"   > Posts</Link></li>
+            {Cookies.get('role') === 'admin'
+            ? <li><Link to="/admin"   > Admin</Link></li>
+            : null
+            }
+      
           </ul>
         </nav>
 
@@ -52,12 +51,16 @@ const Navbar = () => {
         <nav className="sub">
           <ul>
             <li><input type="text" placeholder="search..."/> <button><BiSearchAlt /> </button></li>
-            {username && (  
-              <li className='userCred'><RiUser5Line /> 
-                <span> {username} </span> 
-                <button onClick={signOut}><RiLogoutBoxRLine />logout</button>
-              </li>
-            )}
+            {username 
+              ? 
+                <li className='userCred'><RiUser5Line /> 
+                  <span> {username} </span> 
+                  <button onClick={signOut}><RiLogoutBoxRLine />logout</button>
+                </li>
+              : 
+                <Link to="/login" className="userCred">Login</Link>
+
+            }
           </ul>
         </nav>
       </StyledNavBar>

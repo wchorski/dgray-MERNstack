@@ -85,6 +85,7 @@ export const StyledNavBar = styled.div`
       border-radius: 40px;
       
       padding: 0 .7rem;
+      margin-left: 1rem;
       display: flex;
       align-items: center;
       
