@@ -23,6 +23,7 @@ services:
       - MONGO_PASS=mypassword
       - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
       - ACCESS_TOKEN_SECRET=myAccessTokenSecret
+      - FRONTEND_URL_ORIGIN=http://localhost:3000
     depends_on:
       - mongo
     networks:

@@ -25,6 +25,10 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 0. ____ Users
 0. _R__ & Posts
 
+# Setup Checklist
+0. allow your frontend domain in `allowedOrigins.js`
+
+
 
 
 ## Feature Wish List
@@ -44,3 +48,5 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
 [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page
 [] tool tips. tool tips everywhere
+### server
+[] add `allowedOrigins.js` variable to .env for easy config

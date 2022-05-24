@@ -221,3 +221,29 @@ ul{
   color: blue;
   outline: solid blue 1px;
 }
+
+.peaceOut{
+  font-size: 10rem;
+  margin: 3rem;
+  transform: scaleX(-1.0);
+  animation: peaceOutWave 2.5s infinite ease-in-out;
+  filter: drop-shadow(2px 2px 1px black);
+}
+
+@keyframes peaceOutWave {
+  0%{
+    transform: scaleX(0);
+    transform: translateY(20px);
+  }
+  33% {
+    transform: scaleX(-1.0);
+  }
+  80% {
+    transform: scaleX(1.0);
+    transform: translateY(20px);
+    transform: rotateZ(20deg);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
