@@ -2,8 +2,43 @@ version: '3'
 
 services:
 
+  mongo:
+    restart: unless-stopped
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mymongouser
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+      - MONGO_INITDB_DATABASE=auth
+    volumes:
+      - ./db/mongo-db:/data/db
+    networks:
+      - dgray-network
+  
+  mongo-express:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      # - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+      # - ME_CONFIG_MONGODB_AUTH_USERNAME=admin #match with mongo container
+      # - ME_CONFIG_MONGODB_AUTH_PASSWORD=mypassword #match with mongo container
+      # - ME_CONFIG_BASICAUTH_USERNAME=admin #match with mongo container
+      # - ME_CONFIG_BASICAUTH_PASSWORD=myMongoExpPass #match with mongo container
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=mymongouser
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=mypassword
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=expressful
+    ports:
+      - "3002:8081"
+    volumes:
+      - ./db/mongo-db:/data/db
+    depends_on:
+      - mongo
+    networks:
+      - dgray-network
+
   server:
-    container_name: server-express
+    container_name: server
     restart: unless-stopped
     build:
       context: ./server
@@ -17,10 +52,11 @@ services:
       - /app/node_modules
     environment:
       - PORT=3001 # MUST match with External port above ^
-      - DATABASE_URI=mongo
-      - DATABASE_PORT=27017
-      - MONGO_USER=mymongouser
-      - MONGO_PASS=mypassword
+      - DATABASE_URI=mongo #match with mongo container_name
+      - DATABASE_PORT=27017 #match with mongo container
+      - MONGO_USER=mymongouser #match with mongo container
+      - MONGO_PASS=mypassword #match with mongo container
+      - MONGODB_COLLECTION=dgrayCollection
       - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
       - ACCESS_TOKEN_SECRET=myAccessTokenSecret
       - FRONTEND_URL_ORIGIN=http://localhost:3000
@@ -29,16 +65,8 @@ services:
     networks:
       - dgray-network
 
-  mongo:
-    restart: unless-stopped
-    image: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mymongouser
-      - MONGO_INITDB_ROOT_PASSWORD=mypassword
-    volumes:
-      - ./db/mongo-db:/data/db
-    networks:
-      - dgray-network
+      
+  # # # TODO stop building nginx inside of client container
   # nginx:
   #   restart: always
   #   depends_on:
@@ -53,7 +81,7 @@ services:
   #     - dgray-network
 
   client:
-    container_name: client-react
+    container_name: client
     restart: unless-stopped
     build:
       context: ./client
