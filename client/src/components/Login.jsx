@@ -16,28 +16,28 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const userRef = useRef();
+    const emailRef = useRef();
     const errRef = useRef();
 
-    const [user, resetUser, userAttributeObj] =  useInput('user', '') //useState('');
+    const [email, resetEmail, emailAttributeObj] =  useInput('email', '') //useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [check, toggleCheck] = useToggle('persist', false)
 
     useEffect(() => {
-      userRef.current.focus();
+      emailRef.current.focus();
     }, [])
 
     useEffect(() => {
       setErrMsg('');
-    }, [user, pwd])
+    }, [email, pwd])
 
     const handleSubmit = async (e) => {
       e.preventDefault();
 
       try {
         const response = await axios.post('/auth',
-          JSON.stringify({ user, pwd }),
+          JSON.stringify({ email, pwd }),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
@@ -46,15 +46,15 @@ const Login = () => {
 
         const accessToken = response?.data?.accessToken;
         const roles = response?.data?.roles;
-        setAuth({ user, pwd, roles, accessToken });
-        resetUser() // setUser('');
+        setAuth({ email, pwd, roles, accessToken });
+        resetEmail() // setEmail('');
         setPwd('');
         navigate(from, { replace: true });
       } catch (err) {
         if (!err?.response) {
           setErrMsg('No Server Response');
         } else if (err.response?.status === 400) {
-          setErrMsg('Missing Username or Password');
+          setErrMsg('Missing Email or Password');
         } else if (err.response?.status === 401) {
           setErrMsg('Unauthorized');
         } else {
@@ -83,15 +83,15 @@ const Login = () => {
 
             <form onSubmit={handleSubmit} className='popUp'>
 
-                <label htmlFor="username"><FaUserAlt /></label>
+                <label htmlFor="email"><FaUserAlt /></label>
                 <input
                   type="text"
-                  id="username"
-                  ref={userRef}
+                  id="email"
+                  ref={emailRef}
                   autoComplete="off"
-                  {...userAttributeObj}
+                  {...emailAttributeObj}
                   required
-                  placeholder='username...'
+                  placeholder='email...'
                 />
 
                 <label htmlFor="password"><MdPassword /></label>
@@ -128,15 +128,15 @@ const Login = () => {
             </p>
         </section>
         <h3>Admin</h3>
-        <p>username: User01</p>
+        <p>username: User01@email.com</p>
         <p>password User0!!</p>
         <br />
         <h3>Editor</h3>
-        <p>username: User02</p>
+        <p>username: User02@email.com</p>
         <p>password User02!!</p>
         <br />
         <h3>User / Subscriber</h3>
-        <p>username: User03</p>
+        <p>username: User03@email.com</p>
         <p>password User03!!</p>
         <br />
       </div>
