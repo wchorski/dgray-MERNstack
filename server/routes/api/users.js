@@ -11,6 +11,8 @@ router.route('/')
 
 router.route('/:id')
   .get(verifyRoles(ROLES_LIST.Admin), usersController.getUser)
+  // .patch(usersController.update)
+  .patch(verifyRoles(ROLES_LIST.Admin), usersController.update)
   .delete(verifyRoles(ROLES_LIST.Admin), usersController.deleteUser)
 
 module.exports = router;

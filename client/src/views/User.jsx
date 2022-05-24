@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { FaTrashAlt, FaSkullCrossbones, FaEject, FaUserEdit } from 'react-icons/fa'
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
@@ -71,6 +71,7 @@ export const User = () => {
       <Navbar />
       <div>
         <button className='editBtn' onClick={() => toggleAreYouSure()}> <FaTrashAlt /> </button>
+        <Link to={`/users/editor/${_id}`} className='editMe'><FaUserEdit /></Link>
 
         {isAreYouSure && (
           <StyledPopUp>

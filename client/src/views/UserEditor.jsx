@@ -3,8 +3,9 @@ import {useNavigate, useLocation, useParams, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { useFormik, Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
-import { BsFillPencilFill } from 'react-icons/bs'
+import { FaRegTrashAlt, FaSkullCrossbones, FaEject, FaUserAlt } from 'react-icons/fa'
+import { HiOutlineMail } from 'react-icons/hi'
+import { GrUserSettings } from 'react-icons/gr'
 import { AiFillStop } from 'react-icons/ai'
 
 import {StyledPopUp} from '../styles/popup.styled'
@@ -14,7 +15,7 @@ import Navbar from '../components/Navbar'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from '../api/axios'
-import Users from './Users'
+import Users from '../components/Users'
 
 const ROLES = {
   'Admin': 5150,
@@ -35,7 +36,7 @@ const UserEditor = () => {
 
   const getUser = async () => {    
     try {
-      const response = await axiosPrivate.get(`/users/${'62866eee1aa68368f9f5a764'}`, {
+      const response = await axiosPrivate.get(`/users/${_id}`, {
         signal: controller.signal
       });
 
@@ -49,11 +50,27 @@ const UserEditor = () => {
   }
 
   const updateUser = async (values) => {
+
+    
+    let convertData = {
+      username: values.username,
+      roles: {
+        "User": 0,
+        "Editor": 0,
+        "Admin": 0
+      }
+    }
+    values.admin  ? convertData.roles.Admin = ROLES.Admin   : convertData.roles.Admin = 0;
+    values.editor ? convertData.roles.Editor = ROLES.Editor : convertData.roles.Editor = 0;
+    values.user   ? convertData.roles.User = ROLES.User     : convertData.roles.User = 0;
+
     try{
-      let res = await axiosPrivate.patch(`/users/${_id}`, JSON.stringify( { ...values}), {
+      let res = await axiosPrivate.patch(`/users/${_id}`, JSON.stringify( { ...convertData}), {
         headers: { 'Content-Type': 'application/json'},
         // withCredentials: true
       })
+
+      // getUser()
       return navigate(`/users/${_id}`, { replace: true })
     } catch (err){
       // setissLoginFail(true)
@@ -61,13 +78,27 @@ const UserEditor = () => {
     }
   }
 
+  useEffect(() => {
+
+    getUser();
+
+    return () => {
+      // isMounted = false;
+      controller.abort();
+    }
+  }, [])
+
 
   const UserSchema = Yup.object().shape({
 
     username: Yup.string()
       .required('* Username name required!').min(3, '* Username too short!').max(10, '* Username too long!'),
-    roles: Yup.object()
-      .required('* 1 role is required!')
+    // admin: Yup.boolean(),
+    // editor: Yup.boolean(),
+    // user: Yup.boolean(),
+    // TODO how to validate object?
+    // roles: Yup.object()
+    //   .required('* 1 role is required!')
   })
 
   const [isAreYouSure, setisAreYouSure] = useState(false)
@@ -85,12 +116,9 @@ const UserEditor = () => {
           username: userState.username || 'undefined', 
           admin: userState.roles.Admin === ROLES.Admin ? true : false  || false,
           editor: userState.roles.Editor === ROLES.Editor ? true : false || false,
-          // chboxRoles: {
-          //   admin: true,
-          //   editor: true,
-          // },
+          user: userState.roles.User === ROLES.User ? true : false || false,
         }}
-        validationSchema={UserSchema}
+        // validationSchema={UserSchema}
         validateOnChange={false} // disable on every keystroke
         onSubmit={(values, actions) => {
           // alert(JSON.stringify(values, null, 2))
@@ -103,9 +131,10 @@ const UserEditor = () => {
             <StyledPost>
 
               <Form>
+                <p><HiOutlineMail/> {userState.email}</p>
 
                 <div className='form-item'>
-                  <BsFillPencilFill />
+                  <FaUserAlt />
                   <Field name="username" type="text" placeholder="username..." className='author'/>
                   {errors.username && touched.username ? (
                     <span className='formErr'>{errors.username}</span>
@@ -115,16 +144,16 @@ const UserEditor = () => {
                 <div className='form-item'>
                   <Field type="checkbox" name="admin"/> Admin <br/>
                   <Field type="checkbox" name="editor" /> Editor <br/> 
+                  <Field type="checkbox" name="user" /> User <br/> 
                   {/* <Field type="checkbox" name="checked" value="User" /> User <br/> */}
-                  {errors.content && touched.content ? (
-                    <span className='formErr'>{errors.content}</span>
+                  {errors.roles && touched.roles ? (
+                    <span className='formErr'>{errors.roles}</span>
                     ) : null}
                 </div>
                 
                   <div className='editBtns'>
-                    <button className='submitPost' type='submit'>Update Post</button>
-                    <button className='deleteBtn' type='button' onClick={() => toggleAreYouSure()}> <AiFillStop /> </button>
-                    <button type='button' onClick={() => getUser()}> get user </button>
+                    <button className='submitPost' type='submit'>Update User</button>
+                    <button className='deleteBtn' type='button' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
                   </div>
               </Form>
 

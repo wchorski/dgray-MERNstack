@@ -78,6 +78,7 @@ textarea {
   padding: 0.25rem;
   border-radius: 0.5rem;
   z-index: 100;
+  cursor: pointer;
 }
 
 label,
@@ -208,4 +209,15 @@ ul{
 .createPost svg{
   color: blue;
 
+}
+
+.editMe{
+  padding: .5rem;
+  outline: solid white 1px;
+  border-radius: 5px;
+}
+.editMe:hover, editMe:focus{
+  background-color: white;
+  color: blue;
+  outline: solid blue 1px;
 }

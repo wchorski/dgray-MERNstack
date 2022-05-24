@@ -20,6 +20,7 @@ import Posts from './views/Posts';
 import PostSingle from './views/PostSingle';
 import PostCreate from './views/PostCreate';
 import PostEditor from './views/PostEditor';
+import UserEditor from './views/UserEditor';
 
 const ROLES = {
   'Admin': 5150,
@@ -54,7 +55,7 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
             <Route path="/admin" element={<Admin />} />
             <Route path="/users/:_id" element={<User />} />
-            {/* <Route path="/users/editor/:_id" element={<??? />} /> */}
+            <Route path="/users/editor/:_id" element={<UserEditor/>} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin, ROLES.User]} />}>

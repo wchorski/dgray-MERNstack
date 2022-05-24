@@ -16,6 +16,10 @@ export const UserSingle = (props) => {
           <table>
             <tbody>
               <tr>
+                <th>email:</th>
+                <td>{props.email}</td>
+              </tr>
+              <tr>
                 <th>Username:</th>
                 <td>{props.username}</td>
               </tr>

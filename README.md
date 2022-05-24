@@ -43,3 +43,4 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 [ ] inject inital Users data in the db on a fresh install
 [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
 [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page
+[] tool tips. tool tips everywhere

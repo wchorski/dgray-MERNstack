@@ -50,7 +50,7 @@ exports.update = async (req, res, next) => {
 
   } catch (err){
     console.log(err);
-    res.status(400).json({status: 'failed to post details', message: err.toString()})
+    res.status(400).json({status: 'failed to update post', message: err.toString()})
   }
 }
 
