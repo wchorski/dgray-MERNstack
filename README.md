@@ -25,13 +25,18 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 0. ____ Users
 0. _R__ & Posts
 
-# Setup Checklist
+# Development Setup Checklist
 0. allow your frontend domain in `allowedOrigins.js`
+0. node dev environment `cd ./server` `npm run dev` will kick up express and react at the same time.
+0. ^ i run <a href="https://www.mongodb.com/try/download/community">MongoDB Community Edition</a> locally on my machine and tap into it with <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass</a> 
+0. you could run a dev environment in docker with `dev.sh` but I don't recommend it.
+
 
 
 
 
 ## Feature Wish List
+[] make a solid `compose.yml` for production. ditch docker dev env
 ### posts
 [ ] 'PostCreate.jsx' autofill author as logged in user. make it permanent
 [x] User form to create posts

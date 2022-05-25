@@ -33,7 +33,7 @@ services:
     volumes:
       - ./db/mongo-db:/data/db
     depends_on:
-      - mongo
+      - server
     networks:
       - dgray-network
 

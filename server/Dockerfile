@@ -1,6 +1,10 @@
-FROM node:16
+FROM node:14
+
 WORKDIR /app
 COPY package*.json ./
+
+RUN mkdir -p /app/node_modules
+RUN chown node:node /app/node_modules
 
 ARG NODE_ENV
 RUN if [ "$NODE_ENV" = "development" ]; \
@@ -13,4 +17,4 @@ COPY . ./
 
 EXPOSE $PORT
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "devdoc"]

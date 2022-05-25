@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "devloc": "concurrently \"nodemon server\" \"npm run client\" ",
-    "dev": "nodemon --legacy-watch server",
+    "dev": "concurrently \"nodemon server\" \"npm run client\" ",
+    "devdoc": "nodemon --legacy-watch server",
     "client": "cd ../client && npm start"
   },
   "author": "Dave Gray",
