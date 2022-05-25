@@ -8,7 +8,12 @@ const handleLogin = async (req, res) => {
     if (!email || !pwd) return res.status(400).json({ 'message': 'email and password are required.' });
 
     const foundUser = await User.findOne({ email: email }).exec();
-    if (!foundUser) return res.sendStatus(401); //Unauthorized 
+    if (!foundUser){
+      console.log(`non-user login attempt: ${email}`);
+      return res.sendStatus(401);
+    } //Unauthorized 
+
+    
     // evaluate password 
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (match) {

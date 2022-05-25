@@ -6,11 +6,14 @@ const URI = process.env.DATABASE_URI
 const PORT = process.env.DATABASE_PORT
 const COLLECTION = process.env.MONGODB_COLLECTION
 
-const mongoURL = `mongodb://${USER}:${PWD}@${URI}:${PORT}/?authSource=admin`
+const mongoURL = (USER !== '' ) 
+  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/?authSource=admin`
+  : `mongodb://localhost:27017/${COLLECTION}`
+
+
+// const mongoURL = `mongodb://${USER}:${PWD}@${URI}:${PORT}/?authSource=admin`
 // TODO .env
 // const mongoURL = `mongodb://localhost:27017/${MONGODB_COLLECTION}`
-
-console.log(mongoURL);
 
 const connectDB = async () => {
   try {

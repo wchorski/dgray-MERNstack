@@ -8,7 +8,7 @@ export const StyledPopUp = styled.div`
   height: 30px;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 30rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;

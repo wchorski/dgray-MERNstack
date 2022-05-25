@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "devloc": "concurrently \"nodemon server\" \"npm run client\" ",
-    "dev": "nodemon server",
+    "dev": "nodemon --legacy-watch server",
     "client": "cd ../client && npm start"
   },
   "author": "Dave Gray",

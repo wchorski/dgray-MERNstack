@@ -41,9 +41,10 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 [x] Delete button on Single Post. show only to Editors / Admins
 [x] Editor / Admin able to delete posts
 ### admin
-[ ] User Create Form
-[ ] Admin able to edit user Roles
-[ ] Admin form to create user with Roles
+[ ] Admin able to change password of user
+[] a "forgot password" reset
+[ ] Admin User Create Form
+[x] Admin able to edit user Roles
 [ ] inject inital Users data in the db on a fresh install
 [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
 [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page

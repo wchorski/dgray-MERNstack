@@ -67,7 +67,7 @@ app.use(errorHandler);
 
 mongoose.connection.once('open', () => {
     console.log('-- Connected to MongoDB --');
-    app.listen(PORT, () => console.log(`-- Server running on port ${PORT} --s`));
+    app.listen(PORT, () => console.log(`-- Server running on port ${PORT} --`));
 });
 
 // * default login if no users are found in db
