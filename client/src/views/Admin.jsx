@@ -3,12 +3,14 @@ import { BsPlusSquare } from "react-icons/bs";
 
 import { UserTable } from '../components/UserTable'
 import Navbar from "../components/Navbar";
+import UserCreate from "./UserCreate";
 
 
 const Admin = () => {
     return (
       <>
         <Navbar />
+        <UserCreate />
         <section>
             <h1>Admins Page</h1>
             <br />

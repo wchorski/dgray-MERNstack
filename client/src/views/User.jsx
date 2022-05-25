@@ -8,8 +8,6 @@ import Navbar from '../components/Navbar'
 import { StyledPopUp } from '../styles/popup.styled'
 import { UserSingle } from '../components/UserSingle'
 
-import axios from "../api/axios";
-
 
 export const User = () => {
 
@@ -23,7 +21,7 @@ export const User = () => {
   const [isAreYouSure, setisAreYouSure] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [userState, setuserState] = useState({username: "NoName"});
-  const [fetchError, setFetchError] = useState(null);
+  // const [fetchError, setFetchError] = useState(null);
 
 
   const getUserInfo = async () => {

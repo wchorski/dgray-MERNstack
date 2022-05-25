@@ -4,11 +4,13 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { FaRegTrashAlt, FaUserAlt } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
+import { MdPassword } from 'react-icons/md'
 
 // import {StyledPopUp} from '../styles/popup.styled'
 import { StyledPost } from '../styles/Post.styled'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import axios from '../api/axios'
 
 const ROLES = {
   'Admin': 5150,
@@ -16,7 +18,19 @@ const ROLES = {
   'User': 2001,
 }
 
-const UserEditor = () => {
+
+const CreateAdminSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').max(50, 'Too Long!').required('Required'),
+  username: Yup.string().min(3).max(50, 'Too Long!').required('Required'),
+  password: Yup.string().min(8, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  passwordConf: Yup.string().min(8, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  
+  admin: Yup.boolean(),
+  editor: Yup.boolean(),
+  user: Yup.boolean(),
+});
+
+const UserCreate = () => {
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
@@ -24,26 +38,15 @@ const UserEditor = () => {
   const controller = new AbortController();
   let { _id } = useParams() //? params of react-router-dom previous lilnk URL
 
-  const [userState, setuserState] = useState({username: 'no username...', password: 'no password...', roles: []});
+  const [userState, setuserState] = useState({email: '', username: '', password: '', roles: []});
 
-  const getUser = async () => {    
-    try {
-      const response = await axiosPrivate.get(`/users/${_id}`, {
-        signal: controller.signal
-      });
 
-      setuserState(response.data);
-      console.log(userState.roles)
+  const registerUser = async (values) => {
 
-    } catch (err) {
-      console.error(err);
-      // navigate('/posts', { state: { from: location }, replace: true });
-    }
-  }
-
-  const updateUser = async (values) => {
     let convertData = {
+      email: values.email,
       username: values.username,
+      password: values.password,
       roles: {
         "User": 0,
         "Editor": 0,
@@ -54,65 +57,50 @@ const UserEditor = () => {
     values.editor ? convertData.roles.Editor = ROLES.Editor : convertData.roles.Editor = 0;
     values.user   ? convertData.roles.User = ROLES.User     : convertData.roles.User = 0;
 
-    try{
-      let res = await axiosPrivate.patch(`/users/${_id}`, JSON.stringify( { ...convertData}), {
-        headers: { 'Content-Type': 'application/json'},
-        // withCredentials: true
-      })
+    console.log(convertData);
 
-      // getUser()
-      return navigate(`/users/${_id}`, { replace: true })
+    try{
+      const response = await axios.post('/register',
+        JSON.stringify({ ...convertData }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+
+
     } catch (err){
-      // setissLoginFail(true)
-      console.error(err);
+      console.log(err);
     }
   }
-
-  useEffect(() => {
-
-    getUser();
-
-    return () => {
-      // isMounted = false;
-      controller.abort();
-    }
-  }, [])
-
-
-  const UserSchema = Yup.object().shape({
-
-    username: Yup.string()
-      .required('* Username name required!').min(3, '* Username too short!').max(10, '* Username too long!'),
-    admin: Yup.boolean(),
-    editor: Yup.boolean(),
-    user: Yup.boolean(),
-    // TODO how to validate object?
-    // roles: Yup.object()
-    //   .required('* 1 role is required!')
-  })
 
   const [isAreYouSure, setisAreYouSure] = useState(false)
   const toggleAreYouSure = () => {
     setisAreYouSure(prev => !prev)
   }
 
+
   return (
     <>
       <section>
-       <h2>Edit this User</h2>  
+       <h2>Create New User</h2>  
        <Formik
         enableReinitialize
         initialValues={{ 
-          username: userState.username || 'undefined', 
+          email: '', 
+          username: '', 
+          password: '', 
+          passwordConf:'', 
           admin: userState.roles.Admin === ROLES.Admin ? true : false  || false,
           editor: userState.roles.Editor === ROLES.Editor ? true : false || false,
           user: userState.roles.User === ROLES.User ? true : false || false,
         }}
-        validationSchema={UserSchema}
+        validationSchema={CreateAdminSchema}
         validateOnChange={false} // disable on every keystroke
         onSubmit={(values, actions) => {
           // alert(JSON.stringify(values, null, 2))
-          updateUser(values)
+          registerUser(values)
           actions.resetForm()
         }}
        >
@@ -121,7 +109,13 @@ const UserEditor = () => {
             <StyledPost>
 
               <Form>
-                <p><HiOutlineMail/> {userState.email}</p>
+                <div className='form-item'>
+                <HiOutlineMail/>
+                  <Field name="email" type="text" placeholder="email..." className='author'/>
+                  {errors.email && touched.email ? (
+                    <span className='formErr'>{errors.email}</span>
+                    ) : null}
+                </div>
 
                 <div className='form-item'>
                   <FaUserAlt />
@@ -130,6 +124,22 @@ const UserEditor = () => {
                     <span className='formErr'>{errors.username}</span>
                     ) : null}
                 </div>
+
+                <div className='form-item'>
+                  <MdPassword />
+                  <Field name="password" type="password" placeholder="password..." className='author'/>
+                  {errors.password && touched.password ? (
+                    <span className='formErr'>{errors.password}</span>
+                    ) : null}
+                </div>
+                <div className='form-item'>
+                <MdPassword />
+                  <Field name="passwordConf" type="password" placeholder="confirm password..." className='author'/>
+                  {errors.passwordConf && touched.passwordConf ? (
+                    <span className='formErr'>{errors.passwordConf}</span>
+                    ) : null}
+                </div>
+                
 
                 <div className='form-item'>
                   <Field type="checkbox" name="admin"/> Admin <br/>
@@ -142,7 +152,7 @@ const UserEditor = () => {
                 </div>
                 
                   <div className='editBtns'>
-                    <button className='submitPost' type='submit'>Update User</button>
+                    <button className='submitPost' type='submit'>Create User</button>
                     <button className='deleteBtn' type='button' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
                   </div>
               </Form>
@@ -156,4 +166,4 @@ const UserEditor = () => {
   )
 }
 
-export default UserEditor
+export default UserCreate

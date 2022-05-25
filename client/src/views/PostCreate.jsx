@@ -1,6 +1,6 @@
 import {React, useState } from 'react'
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { useFormik, Formik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
 import { BsFillPencilFill } from 'react-icons/bs'
@@ -8,10 +8,7 @@ import { BsFillPencilFill } from 'react-icons/bs'
 import {StyledPopUp} from '../styles/popup.styled'
 import { StyledPost } from '../styles/Post.styled';
 
-import axios  from '../api/axios';
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-
-// import Navbar from '../components/Navbar'
 
 const PostCreate = () => {
 
@@ -55,8 +52,6 @@ const PostCreate = () => {
       console.log(err)
     }
   }
-
-  const updatePost = async () => {}
 
 
   const PostSchema = Yup.object().shape({

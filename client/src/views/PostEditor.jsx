@@ -1,26 +1,22 @@
 import {React, useState, useEffect} from 'react'
-import {useNavigate, useLocation, useParams, Link} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import { useFormik, Formik, Form, Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
+import { FaSkullCrossbones, FaEject } from 'react-icons/fa'
 import { BsFillPencilFill } from 'react-icons/bs'
 import { AiFillStop } from 'react-icons/ai'
 
 import {StyledPopUp} from '../styles/popup.styled'
 import { StyledPost } from '../styles/Post.styled'
 import { sizeOnKeyStroke, sizeOnPageLoad } from '../helpers/textareaAutoSize'
-import Post from '../components/Post'
-import Navbar from '../components/Navbar'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import axios from '../api/axios'
 
 const PostEditor = () => {
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
-  const location = useLocation();
   const controller = new AbortController();
   let { _id } = useParams() //? params of react-router-dom previous lilnk URL
 

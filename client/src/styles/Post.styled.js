@@ -1,9 +1,4 @@
-import { useEffect } from 'react';
-
-import { FaLessThan } from 'react-icons/fa';
 import styled from 'styled-components'
-
-
 
 
 export const StyledPost = styled.div`
