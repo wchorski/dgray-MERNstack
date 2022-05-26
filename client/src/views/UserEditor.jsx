@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import { FaRegTrashAlt, FaUserAlt } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
+import { MdPassword } from 'react-icons/md'
 
 // import {StyledPopUp} from '../styles/popup.styled'
 import { StyledPost } from '../styles/Post.styled'
@@ -44,15 +45,17 @@ const UserEditor = () => {
   const updateUser = async (values) => {
     let convertData = {
       username: values.username,
+      password: '',
       roles: {
         "User": 0,
         "Editor": 0,
         "Admin": 0
       }
     }
-    values.admin  ? convertData.roles.Admin = ROLES.Admin   : convertData.roles.Admin = 0;
-    values.editor ? convertData.roles.Editor = ROLES.Editor : convertData.roles.Editor = 0;
-    values.user   ? convertData.roles.User = ROLES.User     : convertData.roles.User = 0;
+    values.admin            ? convertData.roles.Admin = ROLES.Admin   : convertData.roles.Admin = 0
+    values.editor           ? convertData.roles.Editor = ROLES.Editor : convertData.roles.Editor = 0
+    values.user             ? convertData.roles.User = ROLES.User     : convertData.roles.User = 0
+    values.password !== ''  ? convertData.password = values.password : delete convertData.password
 
     try{
       let res = await axiosPrivate.patch(`/users/${_id}`, JSON.stringify( { ...convertData}), {
@@ -81,8 +84,10 @@ const UserEditor = () => {
 
   const UserSchema = Yup.object().shape({
 
-    username: Yup.string()
-      .required('* Username name required!').min(3, '* Username too short!').max(10, '* Username too long!'),
+    username: Yup.string().required('* Username name required!').min(3, '* Username too short!').max(10, '* Username too long!'),
+    password: Yup.string().min(8, 'Too Short!').max(50, 'Too Long!'),
+    passwordConf: Yup.string().min(8, 'Too Short!').max(50, 'Too Long!'),
+
     admin: Yup.boolean(),
     editor: Yup.boolean(),
     user: Yup.boolean(),
@@ -104,6 +109,8 @@ const UserEditor = () => {
         enableReinitialize
         initialValues={{ 
           username: userState.username || 'undefined', 
+          password: '', 
+          passwordConf:'', 
           admin: userState.roles.Admin === ROLES.Admin ? true : false  || false,
           editor: userState.roles.Editor === ROLES.Editor ? true : false || false,
           user: userState.roles.User === ROLES.User ? true : false || false,
@@ -130,6 +137,26 @@ const UserEditor = () => {
                     <span className='formErr'>{errors.username}</span>
                     ) : null}
                 </div>
+                <br/>
+
+                <div className='changepassword'>
+                  <h3>Change Password</h3>
+                  <div className='form-item'>
+                    <MdPassword className='ico'/>
+                    <Field name="password" type="password" placeholder="password..." className='author' autoComplete="off"/>
+                    {errors.password && touched.password ? (
+                      <span className='formErr'>{errors.password}</span>
+                      ) : null}
+                  </div>
+                  <div className='form-item'>
+                  <MdPassword className='ico'/>
+                    <Field name="passwordConf" type="password" placeholder="confirm password..." className='author' autoComplete="off"/>
+                    {errors.passwordConf && touched.passwordConf ? (
+                      <span className='formErr'>{errors.passwordConf}</span>
+                      ) : null}
+                  </div>
+                </div>
+                <br/>
 
                 <div className='form-item'>
                   <Field type="checkbox" name="admin"/> Admin <br/>

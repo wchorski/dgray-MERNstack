@@ -37,6 +37,7 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # Feature Wish List
 - [] make a solid `compose.yml` for production. ditch docker dev env
+- [] add CSSTransitions
 ### posts
 - [ ] 'PostCreate.jsx' autofill author as logged in user. make it permanent
 - [x] User form to create posts
@@ -46,13 +47,14 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 - [x] Delete button on Single Post. show only to Editors / Admins
 - [x] Editor / Admin able to delete posts
 ### admin
-- [ ] Admin able to change password of user
-- [] a "forgot password" reset
-- [ ] Admin User Create Form
+- [x] Admin able to change password of user
+- [] a "forgot password" email reset
+- [] password validation with special character and capital letter (npm yup-password?)
+- [x] Admin User Create Form
 - [x] Admin able to edit user Roles
-- [ ] inject inital Users data in the db on a fresh install
-- [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
-- [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page
+- [x] inject inital Admin in the db on a fresh install
+- [] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
+- [] Modern editor that superimposes itself on the 'PostSingle.jsx' page
 - [] tool tips. tool tips everywhere
 ### server
-- [] add `allowedOrigins.js` variable to .env for easy config
+- [x] add `allowedOrigins.js` variable to .env for easy config

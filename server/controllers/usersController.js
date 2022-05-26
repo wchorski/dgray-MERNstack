@@ -1,4 +1,5 @@
 const User = require('../model/User');
+const bcrypt = require('bcrypt');
 
 exports.getAllUsers = async (req, res) => {
     const users = await User.find();
@@ -27,9 +28,19 @@ exports.getUser = async (req, res) => {
 }
 
 exports.update = async (req, res, next) => {
+
   try{
     const usr = await User.findById(req.params.id)
-    Object.assign(usr, req.body)
+
+    const usrCryptPass = req.body;
+
+    if(req.body.password){
+      const hashedPwd = await bcrypt.hash(req.body.password, 10)
+      usrCryptPass.password = hashedPwd
+    }
+    
+    console.log(usr);
+    Object.assign(usr, usrCryptPass)
     res.status(200).json(usr)
     usr.save()
 
