@@ -2,14 +2,13 @@ import {React, useState, useEffect} from 'react'
 import {useNavigate, useParams } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import { FaRegTrashAlt, FaUserAlt } from 'react-icons/fa'
+import { FaUserAlt } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { MdPassword } from 'react-icons/md'
 
-// import {StyledPopUp} from '../styles/popup.styled'
-import { StyledPost } from '../styles/Post.styled'
+import { StyledUserAdminCreate } from '../styles/UserAdminCreate.styled'
 
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+// import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from '../api/axios'
 
 const ROLES = {
@@ -32,11 +31,11 @@ const CreateAdminSchema = Yup.object().shape({
 
 const UserCreate = () => {
 
-  const axiosPrivate = useAxiosPrivate();
+  // const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
 
-  const controller = new AbortController();
-  let { _id } = useParams() //? params of react-router-dom previous lilnk URL
+  // const controller = new AbortController();
+  // let { _id } = useParams() //? params of react-router-dom previous lilnk URL
 
   const [userState, setuserState] = useState({email: '', username: '', password: '', roles: []});
 
@@ -45,8 +44,8 @@ const UserCreate = () => {
 
     let convertData = {
       email: values.email,
-      username: values.username,
-      password: values.password,
+      user: values.username,
+      pwd: values.password,
       roles: {
         "User": 0,
         "Editor": 0,
@@ -67,7 +66,9 @@ const UserCreate = () => {
           withCredentials: true
         }
       );
-      console.log(JSON.stringify(response?.data));
+
+      return window.location.reload()
+      // console.log(JSON.stringify(response?.data));
 
 
     } catch (err){
@@ -106,35 +107,35 @@ const UserCreate = () => {
        >
          {({ errors, touched, values }) => (
           <>
-            <StyledPost>
+            <StyledUserAdminCreate>
 
               <Form>
                 <div className='form-item'>
-                <HiOutlineMail/>
-                  <Field name="email" type="text" placeholder="email..." className='author'/>
+                <HiOutlineMail className='ico'/>
+                  <Field name="email" type="text" placeholder="email..." className='author' autoComplete="off"/>
                   {errors.email && touched.email ? (
                     <span className='formErr'>{errors.email}</span>
                     ) : null}
                 </div>
 
                 <div className='form-item'>
-                  <FaUserAlt />
-                  <Field name="username" type="text" placeholder="username..." className='author'/>
+                  <FaUserAlt className='ico'/>
+                  <Field name="username" type="text" placeholder="username..." className='author' autoComplete="off"/>
                   {errors.username && touched.username ? (
                     <span className='formErr'>{errors.username}</span>
                     ) : null}
                 </div>
 
                 <div className='form-item'>
-                  <MdPassword />
-                  <Field name="password" type="password" placeholder="password..." className='author'/>
+                  <MdPassword className='ico'/>
+                  <Field name="password" type="password" placeholder="password..." className='author' autoComplete="off"/>
                   {errors.password && touched.password ? (
                     <span className='formErr'>{errors.password}</span>
                     ) : null}
                 </div>
                 <div className='form-item'>
-                <MdPassword />
-                  <Field name="passwordConf" type="password" placeholder="confirm password..." className='author'/>
+                <MdPassword className='ico'/>
+                  <Field name="passwordConf" type="password" placeholder="confirm password..." className='author' autoComplete="off"/>
                   {errors.passwordConf && touched.passwordConf ? (
                     <span className='formErr'>{errors.passwordConf}</span>
                     ) : null}
@@ -153,11 +154,10 @@ const UserCreate = () => {
                 
                   <div className='editBtns'>
                     <button className='submitPost' type='submit'>Create User</button>
-                    <button className='deleteBtn' type='button' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
                   </div>
               </Form>
 
-            </StyledPost>
+            </StyledUserAdminCreate>
           </>
           )}
        </Formik>

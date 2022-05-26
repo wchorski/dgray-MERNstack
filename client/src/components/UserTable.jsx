@@ -128,8 +128,6 @@ export const UserTable = () => {
       {/* <button onClick={() => getUsers}>Refresh User List</button> */}
       
       <StyledGigTable>
-        <button onClick={getUsers}>refresh users <GrRefresh /></button>
-
 
         <div className="postTable">
 

@@ -4,22 +4,22 @@ const USER = process.env.MONGO_USER
 const PWD = process.env.MONGO_PASS
 const URI = process.env.DATABASE_URI
 const PORT = process.env.DATABASE_PORT
+
+// TODO Collection name with database in container
 const COLLECTION = process.env.MONGODB_COLLECTION
 
-const mongoURL = (USER !== '' ) 
-  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/?authSource=admin`
+const mongoURL = (USER !== 'localhost' ) 
+  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/${COLLECTION}/?authSource=admin`
   : `mongodb://localhost:27017/${COLLECTION}`
 
-
-// const mongoURL = `mongodb://${USER}:${PWD}@${URI}:${PORT}/?authSource=admin`
-// TODO .env
-// const mongoURL = `mongodb://localhost:27017/${MONGODB_COLLECTION}`
+  console.log(mongoURL);
 
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURL, {
       useUnifiedTopology: true,
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      family: 4 // Use IPv4, skip trying IPv6
     });
   } catch (err) {
     console.error(err);
