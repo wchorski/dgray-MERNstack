@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import { ImHome3 } from 'react-icons/im'
 
@@ -6,58 +8,34 @@ import { Jokes } from "../components/Jokes";
 
 const Home = (props, req, res) => {
 
+  const [homies, setHomies] = useState([])
+
+
+  useEffect(() => {
+
+    let homieArray = []
+
+    for(let i=0; i<5000; i++){(
+      homieArray.push(<ImHome3 />)
+    )}
+
+    setHomies(homieArray)
+
+
+  }, [])
+
   return (
     <>
       <Navbar />
       <section>
         <h1>Welcome Home</h1>
-        <p>Login or Signup to view posts</p>
+        <p><Link to='/login'>Login</Link> or <Link to='/signup'>Signup</Link> to view posts</p>
         <br />
         <Jokes />
         <br />
+
         <p>
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
-          <ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 /><ImHome3 />
+          {homies}
         </p>
 
 

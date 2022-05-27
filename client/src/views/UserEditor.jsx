@@ -170,7 +170,7 @@ const UserEditor = () => {
                 
                   <div className='editBtns'>
                     <button className='submitPost' type='submit'>Update User</button>
-                    <button className='deleteBtn' type='button' onClick={() => toggleAreYouSure()}> <FaRegTrashAlt /> </button>
+                    <button className='deleteBtn' type='button' onClick={() => navigate('/admin')}> <FaRegTrashAlt /> </button>
                   </div>
               </Form>
 

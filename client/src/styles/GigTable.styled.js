@@ -10,42 +10,50 @@ export const StyledGigTable = styled.div`
   }
 
   .postTable{
+    // background-color: var(--color-highlight);
     display: flex;
     justify-content: center;
   }
   table{
-    background-color: rgb(90, 90, 90);
+    background-color: var(--color-highlight);
+    outline: solid var(--color-base) 2px;
     padding: .5rem;
     text-align: left;
     width: 90%;
     border-collapse: collapse;
   }
-  tr{
+  .header{
     border: solid black 3px;
-    padding: 1rem;
   }
+
   th{
     border: solid black 1px;
-    background-color: rgb(71, 213, 116);
     color: black;
     padding: 1rem .5rem;
   }
   td{
-    border: solid rgba(0, 0, 0, 0.529) 1px;
+    // border: solid rgba(0, 0, 0, 0.529) 1px;
     padding: .5rem;
   }
-  .postTable table tbody tr:nth-child(even){
-    background-color: rgba(255, 255, 255, 0.139);
+
+  tbody{
+
+    tr:nth-child(odd){
+      background-color: var(--color-base);
+    }
+    tr:nth-child(even){
+      background-color: #353546;
+    }
+    tr:hover{
+      background-color: #354646;
+    }
   }
+
+
   tfoot{
-    background-color: rgb(53, 160, 87);
+    background-color: var(--color-highlight);
     color: black;
-  }
-  .postTable tr:hover{
-    background-color: rgba(223, 221, 182, 0.603);
-  }
-  .postTable table tbody tr:nth-child(even):hover{
-    background-color: rgba(223, 221, 182, 0.603);
+    border: solid black 1px;
   }
 
   .card{
@@ -55,5 +63,14 @@ export const StyledGigTable = styled.div`
     padding: 1rem 1.8rem;
   
     margin: .3rem;
+  }
+
+  .clientInfo{
+    background-color: var(--color-base);
+    padding: 3rem;
+
+    th{
+      background-color: var(--color-highlight);
+    }
   }
 `

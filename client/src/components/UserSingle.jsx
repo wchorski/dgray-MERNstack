@@ -1,5 +1,5 @@
 // rafc snippit
-import React, { useState } from 'react'
+import React from 'react'
 
 
 import { StyledGigTable } from '../styles/GigTable.styled'
@@ -7,12 +7,12 @@ import { StyledGigTable } from '../styles/GigTable.styled'
 
 export const UserSingle = (props) => {
 
-  const {_id, date, color, name, message, getForms, clsNms='card'} = props
+  // const {_id, date, color, name, message, getForms, clsNms='card'} = props
 
   return (
     <>
       <StyledGigTable>
-        <div className="card clientInfo">
+        <div className="clientInfo">
           <table>
             <tbody>
               <tr>

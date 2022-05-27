@@ -32,9 +32,7 @@ const Admin = () => {
 
         <UserTable />
         <br />
-        <div className="flexGrow">
-          <Link to="/">Home</Link>
-        </div>
+
       </section>
     
     </>

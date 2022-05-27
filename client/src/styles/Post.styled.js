@@ -20,6 +20,7 @@ export const StyledPost = styled.div`
     color: grey;
     border: none;
     background-color: transparent;
+    margin-bottom: .3rem;
   }
 
   .content{
@@ -56,20 +57,16 @@ export const StyledPost = styled.div`
       cursor: pointer;
       margin-right: 1rem;
       transition: .2s;
-      
-      &:hover{
-        color: yellow;
-        background-color: blue;
-      }
 
     }
     .deleteBtn{
       color: red;
       background-color: white;
-
+      
       &:hover{
         color: white;
         background-color: red;
+        border-bottom: red;
       }
     }
   }

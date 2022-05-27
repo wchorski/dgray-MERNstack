@@ -14,7 +14,7 @@ export const StyledNavBar = styled.div`
     align-items: center;
   
     a:hover{
-      opacity: .2;
+      opacity: .6;
     }
   
     .App-logo{
@@ -22,7 +22,7 @@ export const StyledNavBar = styled.div`
       width: 50px;
   
       &:hover{
-        opacity: .2;
+        opacity: .6;
       }
     }
     
@@ -49,9 +49,9 @@ export const StyledNavBar = styled.div`
         }
       }
       li:hover{
-        background-color: rgb(62, 78, 112);
+        background-color: var(--color-highlight);
         a{
-          color: rgb(156, 165, 183);
+          color: var(--color-alt);
         }
       }
     }
@@ -67,6 +67,10 @@ export const StyledNavBar = styled.div`
     // position: fixed;
     top: 3.4rem;
 
+    a{
+      color: white;
+    }
+
     button{
       margin: 0;
       padding: 0;
@@ -80,8 +84,12 @@ export const StyledNavBar = styled.div`
       margin: 0;
     }
 
+    .btnSearch{
+      padding: .3rem;
+    }
+
     .userCred{
-      background-color: grey;
+      background-color: var(--color-highlight);
       border-radius: 40px;
       
       padding: 0 .7rem;

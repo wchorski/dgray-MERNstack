@@ -1,22 +1,29 @@
-import {React, useState, useEffect} from 'react'
-import {useNavigate, useLocation} from 'react-router-dom'
+import {React} from 'react'
 import { BsFillPencilFill } from 'react-icons/bs'
-import axios from '../api/axios'
+import { MdDateRange } from 'react-icons/md'
+import { format } from 'date-fns'
 
-import { StyledPost } from '../styles/Post.styled'
+const formatDate = (inputDate) => {
+  try{
+    return format(new Date( inputDate ), 'MM/dd/yyyy')
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 
 const Post = (props) => {
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   // const axiosPrivate = useAxiosPrivate();
 
-  const {title, author, content} = props
+  // const {title, author, content} = props
 
   return (
     <>
-      <h3 className='title'>{props.title}</h3>
-      <span className='author'><BsFillPencilFill /> {props.author}</span>
+      <h3 className='title'>{props.title}</h3> <br />
+      <span className='author'><BsFillPencilFill /> {props.author}</span> <br/>
+      <span className='author'><MdDateRange /> {formatDate(props.dateCreated)}</span> <br />
 
       <p className="content">{props.content}</p>
     </>

@@ -4,11 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useTable, useSortBy } from 'react-table'
 import { Link } from 'react-router-dom'
 import { FaSortAmountUp,  FaSortAmountDownAlt} from 'react-icons/fa'
-import { GrRefresh } from 'react-icons/gr'
-import { faHelicopter } from '@fortawesome/free-solid-svg-icons';
 
-// import mock_data from './mock_data.json'
-import { format } from 'date-fns'
 import { StyledGigTable } from '../styles/GigTable.styled'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -112,6 +108,11 @@ export const UserTable = () => {
       Footer: 'Role',
       accessor: 'roles',
     },
+    {
+      Header: 'ID',
+      Footer: 'ID',
+      accessor: '_id',
+    },
   ]
 
   const newColumns = useMemo(() => usersColumns, []) //* useMemo stops render on every refresh. performant
@@ -137,7 +138,7 @@ export const UserTable = () => {
 
             <thead>
               {headerGroups.map((headGrp, i) => (
-                <tr {...headGrp.getHeaderGroupProps()} key={i}>
+                <tr {...headGrp.getHeaderGroupProps()} key={i} className='header'>
                   {headGrp.headers.map((column, i) => (
                     <th {...column.getHeaderProps(column.getSortByToggleProps())} key={i}>
                       {column.render('Header')}
@@ -161,7 +162,7 @@ export const UserTable = () => {
                         <td {...cell.getCellProps()}> {cell.render('Cell')}</td>
                       )
                     })}
-
+                      {console.log(row.values)}
                     <td><Link to={`/users/${row.values._id}`}> account </Link> </td>
                   </tr>
                 )

@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react'
 import {useNavigate, useLocation, useParams, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { FaRegTrashAlt, FaSkullCrossbones, FaEject } from 'react-icons/fa'
+import { IoIosArrowRoundBack } from 'react-icons/io'
 import { FiEdit } from 'react-icons/fi'
 
 import {StyledPopUp} from '../styles/popup.styled'
@@ -10,7 +11,7 @@ import Post from '../components/Post'
 import Navbar from '../components/Navbar'
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import axios from '../api/axios'
+// import axios from '../api/axios'
 
 const PostSingle = () => {
 
@@ -80,7 +81,9 @@ const PostSingle = () => {
       <section>
 
         <StyledPost>
-          <Post {...postSingle}/>
+          <Post {...postSingle}/> <br />
+
+          <Link to='/posts'> <IoIosArrowRoundBack /> go back</Link>
 
           {roleState === 'admin' || roleState === 'editor' ?  
             <div className='editBtns'>

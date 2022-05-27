@@ -53,7 +53,7 @@ const Navbar = () => {
 
         <nav className="sub">
           <ul>
-            <li><input type="text" placeholder="search..."/> <button><BiSearchAlt /> </button></li>
+            <li><input type="text" placeholder="search..."/> <button className="btnSearch"><BiSearchAlt /> </button></li>
             {username 
               ? 
                 <li className='userCred'><RiUser5Line /> 

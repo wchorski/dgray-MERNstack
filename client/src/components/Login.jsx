@@ -127,18 +127,6 @@ const Login = () => {
                 <Link to="/">Home</Link>
             </p>
         </section>
-        <h3>Admin</h3>
-        <p>username: User01@email.com</p>
-        <p>password User0!!</p>
-        <br />
-        <h3>Editor</h3>
-        <p>username: User02@email.com</p>
-        <p>password User02!!</p>
-        <br />
-        <h3>User / Subscriber</h3>
-        <p>username: User03@email.com</p>
-        <p>password User03!!</p>
-        <br />
       </div>
 
     )

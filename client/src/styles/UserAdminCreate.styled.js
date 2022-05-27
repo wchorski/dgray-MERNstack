@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 export const StyledUserAdminCreate = styled.div`
-  background-color: hsl(248deg 40% 32% / 90%);
+  background-color: #ffffff0d;
   font-size: 30px;
   height: 30rem;
   padding: 2rem;

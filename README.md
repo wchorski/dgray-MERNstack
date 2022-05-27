@@ -40,7 +40,12 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 # 🌠 Feature Wish List
 - [ ] make a solid `compose.yml` for production. ditch docker dev env
 - [ ] add CSSTransitions
+- [ ] dark / light mode with cookie
+- [ ] make content and nav restricted to ~1200px screen width. but have color expand the whole page. 
+- [ ] think mobile
 ### posts
+- [x] date created on post model
+- [ ] date modified on post model
 - [ ] only get Posts excerpt so it actually locks content behind Sign Up
 - [x] User form to create posts
 - [x] Only Allow Registered Users to view Single Post page (*working ish)
@@ -60,5 +65,6 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 - [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page
 - [ ] tool tips. tool tips everywhere
 - [ ] make search queary filter users table
+- [ ] color picker for background & highlight color
 ### server
 - [x] add `allowedOrigins.js` variable to .env for easy config

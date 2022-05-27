@@ -68,7 +68,7 @@ export const User = () => {
     <>
       <Navbar />
       <div>
-        <button className='editBtn' onClick={() => toggleAreYouSure()}> <FaTrashAlt /> </button>
+        <button className='btnDelete' onClick={() => toggleAreYouSure()}> <FaTrashAlt /> </button>
         <Link to={`/users/editor/${_id}`} className='editMe'><FaUserEdit /></Link>
 
         {isAreYouSure && (

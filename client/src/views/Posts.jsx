@@ -7,7 +7,7 @@ import { StyledPostsList } from '../styles/PostsList.styled'
 import Navbar from '../components/Navbar'
 import Post from '../components/Post'
 
-import axios from '../api/axios'
+// import axios from '../api/axios'
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 
@@ -38,6 +38,10 @@ const Posts = () => {
     }
   }
 
+  const goToPostSingle = (_id) => {
+    console.log('take me there: ' + _id);
+  }
+
   useEffect(() => {
 
     getPosts();
@@ -53,7 +57,7 @@ const Posts = () => {
   return (
     <>
       <Navbar />
-      <section>
+      {/* <section> */}
         <h1>Posts</h1> 
         {roleState === 'admin' || roleState === 'editor'  
           ? <Link to={`/posts/create`} className='createPost'><BsPlusSquare /> <span>Create Post</span></Link>
@@ -63,16 +67,18 @@ const Posts = () => {
         {/* //TODO this doesn't actually lock out info, just makes it convienent to read */}
         <StyledPostsList>
           {postsArray.slice().reverse().map((post) => (
-            <article className='excerpt' key={post._id}>
+            <Link to={`/posts/${post._id}`}>
+              <article className='excerpt' key={post._id} onClick={goToPostSingle(post._id)}>
 
-              <Post {...post}/>
-              <Link to={`/posts/${post._id}`} className='readmore'> Read More... </Link> 
+                <Post {...post}/>
+                <Link to={`/posts/${post._id}`} className='readmore'> Read More... </Link> 
 
 
-            </article>
+              </article>
+            </Link>
           ))}
         </StyledPostsList>
-      </section>
+      {/* </section> */}
     </>
   )
 }
