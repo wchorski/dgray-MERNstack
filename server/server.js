@@ -75,3 +75,6 @@ mongoose.connection.once('open', () => {
 
 const defaultAdmin = require('./config/defaultAdmin')
 defaultAdmin()
+
+const defaultPosts = require('./config/defaultPosts')
+defaultPosts()

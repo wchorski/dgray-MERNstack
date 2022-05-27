@@ -11,8 +11,7 @@ const Home = (props, req, res) => {
       <Navbar />
       <section>
         <h1>Welcome Home</h1>
-        <br />
-        <Link to="/linkpage">page of links</Link>
+        <p>Login or Signup to view posts</p>
         <br />
         <Jokes />
         <br />

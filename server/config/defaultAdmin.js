@@ -1,35 +1,33 @@
-// const usersController = require('../controllers/usersController');
-// const registerController = require('../controllers/registerController');
 const ROLES = require('./roles_list')
 const User = require('../model/User');
 const bcrypt = require('bcrypt');
+const defaultUsers = require('./defaultUsers.json')
 
-const defaultAdmin  = async (req, res) => {
+const defaultAdmin  = async () => {
 
   // See if there is any users. 
   const users = await User.find();
 
   if (users.length === 0){
 
-    //encrypt the password
-    const hashedPwd = await bcrypt.hash("SamusAran_isaMetroid", 10);
-
-    //create and store the new user
-    const result = await User.create({
-      "email": "admin@email.com",
-      "username": "admin",
-      "roles": {
-        "Admin": 5150,
-        "Editor": 1984,
-        "User": 2001
-      },
-      "password": hashedPwd
-    });
-
     console.log('*** *** *** *** *** *** *** *** *** *** *** *** *** ***');
-    console.log('*** Default Admin Created ***');
-    console.log('-----> USERNAME: admin ');
-    console.log('-----> PASSWORD: SamusAran_isaMetroid ');
+    console.log('*** Default Users Created ***');
+
+    defaultUsers.forEach(async (usr) => {
+      //encrypt the password
+      const hashedPwd = await bcrypt.hash(usr.password, 10);
+  
+      //create and store the new user
+      const result = await User.create({
+        "email": usr.email,
+        "username": usr.username,
+        "roles": usr.roles,
+        "password": hashedPwd
+      });
+
+      console.log(usr);
+    })
+
     console.log('*** *** *** *** *** *** *** *** *** *** *** *** *** ***');
     console.log('*** *** *** *** *** *** *** *** *** *** *** *** *** ***');
     return null;

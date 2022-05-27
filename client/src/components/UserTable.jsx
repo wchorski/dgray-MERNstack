@@ -49,7 +49,9 @@ export const UserTable = () => {
     let prettyArr = []
     
     array.map(user => {
+      // TODO remove this and just use json delete / parse
       let prettyUser = {
+        email: user.email,
         username: user.username,
         roles: whatRole(user),
         _id: user._id
@@ -96,6 +98,11 @@ export const UserTable = () => {
   //? TABLE #################################
   const usersColumns = [
     {
+      Header: 'Email',
+      Footer: 'Email',
+      accessor: 'email'
+    },
+    {
       Header: 'Username',
       Footer: 'Username',
       accessor: 'username',
@@ -104,11 +111,6 @@ export const UserTable = () => {
       Header: 'Role',
       Footer: 'Role',
       accessor: 'roles',
-    },
-    {
-      Header: 'ID',
-      Footer: 'ID',
-      accessor: '_id'
     },
   ]
 

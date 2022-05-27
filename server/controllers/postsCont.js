@@ -1,10 +1,9 @@
 const Post = require('../model/Post');
 
 exports.getAllPosts = async (req, res) => {
-    console.log('wegot all Post');
-    const posts = await Post.find();
-    if (!posts) return res.status(204).json({ 'message': 'No posts found' });
-    res.json(posts);
+  const posts = await Post.find();
+  if (!posts) return res.status(204).json({ 'message': 'No posts found' });
+  res.json(posts);
 }
 
 exports.getPost = async (req, res) => {

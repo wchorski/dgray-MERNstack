@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsPlusSquare } from "react-icons/bs";
-import { StyledUserAdminCreate } from '../styles/UserAdminCreate.styled'
 
 import { UserTable } from '../components/UserTable'
 import Navbar from "../components/Navbar";
 import UserCreate from "./UserCreate";
+
 
 
 const Admin = () => {

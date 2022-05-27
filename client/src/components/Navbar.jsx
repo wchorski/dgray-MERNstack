@@ -38,10 +38,13 @@ const Navbar = () => {
           </a>
           <ul>
             <li><Link to="/"        > Home</Link></li>
-            <li><Link to="/posts"   > Posts</Link></li>
+            {Cookies.get('role') === 'admin' || 'editor' || 'user'
+              ? <li><Link to="/posts"   > Posts</Link></li>
+              : null
+            }
             {Cookies.get('role') === 'admin'
-            ? <li><Link to="/admin"   > Admin</Link></li>
-            : null
+              ? <li><Link to="/admin"   > Admin</Link></li>
+              : null
             }
       
           </ul>

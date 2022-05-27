@@ -39,7 +39,6 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/linkpage" element={<LinkPage />} />
-        <Route path="/posts" element={<Posts />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
@@ -61,6 +60,7 @@ function App() {
           <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin, ROLES.User]} />}>
             <Route path="/lounge" element={<Lounge />} />
             <Route path="/posts/:_id" element={<PostSingle />} />
+            <Route path="/posts" element={<Posts />} />
           </Route>
         </Route>
 

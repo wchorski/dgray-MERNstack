@@ -8,14 +8,13 @@ exports.getAllUsers = async (req, res) => {
 }
 
 exports.getUser = async (req, res) => {
-  // console.log('--getuser');
   try{
     const user = await User.findById(req.params.id)
 
     res.status(200).json(user)
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed to user_details', message: err.toString()})
   }
 
@@ -39,13 +38,12 @@ exports.update = async (req, res, next) => {
       usrCryptPass.password = hashedPwd
     }
     
-    console.log(usr);
     Object.assign(usr, usrCryptPass)
     res.status(200).json(usr)
     usr.save()
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed to update user', message: err.toString()})
   }
 }
@@ -60,7 +58,7 @@ exports.deleteUser = async (req, res) => {
     })
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed user deletion',})
   }
 
