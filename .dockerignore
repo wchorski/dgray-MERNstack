@@ -6,6 +6,13 @@ Dockerfile.dev
 .git
 .gitignore
 npm-debug.log
+
 **/ignoreme.txt
 ignoreme.txt
 app/ignoreme.txt
+
+ignoremefolder
+/ignoremefolder
+*/ignoremefolder
+**/ignoremefolder
+app/ignoremefolder
