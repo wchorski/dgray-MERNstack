@@ -34,7 +34,7 @@ const Home = (props, req, res) => {
         <Jokes />
         <br />
 
-        <p>
+        <p className="homies">
           {homies}
         </p>
 

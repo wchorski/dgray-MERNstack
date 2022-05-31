@@ -57,7 +57,7 @@ const Posts = () => {
   return (
     <>
       <Navbar />
-      {/* <section> */}
+      <section className='posts'>
         <h1>Posts</h1> 
         {roleState === 'admin' || roleState === 'editor'  
           ? <Link to={`/posts/create`} className='createPost'><BsPlusSquare /> <span>Create Post</span></Link>
@@ -78,7 +78,7 @@ const Posts = () => {
             </Link>
           ))}
         </StyledPostsList>
-      {/* </section> */}
+      </section>
     </>
   )
 }

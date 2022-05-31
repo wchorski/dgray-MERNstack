@@ -14,6 +14,8 @@ export const StyledPopUp = styled.div`
   flex-direction: column;
 
   position: absolute;
+  right: 50%;
+  // top: 50%;
   z-index: 10000
 
 `

@@ -43,6 +43,8 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 - [ ] dark / light mode with cookie
 - [ ] make content and nav restricted to ~1200px screen width. but have color expand the whole page. 
 - [ ] think mobile
+- [ ] nav that folds up on scroll up, and comes back on scroll down (maybe just for mobile?)
+- [ ] footer?
 ### posts
 - [x] date created on post model
 - [ ] date modified on post model
@@ -54,10 +56,12 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 - [x] Editor / Admin able to delete posts
 - [ ] 'PostCreate.jsx' autofill author as logged in user. make it permanent
 - [ ] make search queary filter post table
+- [ ] featured image
 ### admin
 - [x] Admin able to change password of user
 - [ ] a "forgot password" email reset
 - [ ] password validation with special character and capital letter (npm yup-password?)
+- [ ] change background & logo
 - [x] Admin User Create Form
 - [x] Admin able to edit user Roles
 - [x] inject inital Admin in the db on a fresh install

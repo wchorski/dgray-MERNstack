@@ -15,6 +15,9 @@ export const StyledPost = styled.div`
     text-decoration: underline; 
     background-color: transparent;
   }
+  input.title{
+    width: 100%;
+  }
 
   .author{
     color: grey;
@@ -47,11 +50,18 @@ export const StyledPost = styled.div`
     // outline: solid yellow 3px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 
     position: block;
     right: 0;
     bottom: 0;
     margin-top: .1rem;
+
+    a{
+      border: solid var(--color-highlight) 1px;
+      padding: .6rem;
+      border-radius: 10px;
+    }
     
     button{
       cursor: pointer;

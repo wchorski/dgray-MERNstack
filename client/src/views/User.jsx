@@ -67,9 +67,11 @@ export const User = () => {
   return (
     <>
       <Navbar />
-      <div>
-        <button className='btnDelete' onClick={() => toggleAreYouSure()}> <FaTrashAlt /> </button>
-        <Link to={`/users/editor/${_id}`} className='editMe'><FaUserEdit /></Link>
+      <section>
+        <div className="editBtns">
+          <button className='btnDelete' onClick={() => toggleAreYouSure()}> <FaTrashAlt /> </button>
+          <Link to={`/users/editor/${_id}`} className='editMe'><FaUserEdit /></Link>
+        </div>
 
         {isAreYouSure && (
           <StyledPopUp>
@@ -83,7 +85,7 @@ export const User = () => {
           <UserSingle {...userState} />
         )}
 
-      </div>
+      </section>
     </>
   )
 }

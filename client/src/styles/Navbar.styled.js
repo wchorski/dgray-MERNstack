@@ -3,13 +3,36 @@ import styled from 'styled-components'
 
 export const StyledNavBar = styled.div`
   width: 100%;
-  background-color: rgb(35, 35, 47);
+  // background-color: rgb(35, 35, 47);
+  background-color: blue;
   position: sticky;
   top: 0rem;
   margin-bottom: 1rem;
   z-index: 500;
+
+  .nav-bg-main{
+    background-color: red;
+    background-color: rgb(35, 35, 47);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-bg-sub{
+    background-color: green;
+    background-color: #1a1a22;
+    box-shadow: #0000008a 3px 3px 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   nav.main{
+    // border-left: solid whitesmoke 2px;
+    // border-right: solid whitesmoke 2px;
+    width: var(--width-cont);
     display: flex;
     align-items: center;
   
@@ -51,17 +74,16 @@ export const StyledNavBar = styled.div`
       li:hover{
         background-color: var(--color-highlight);
         a{
-          color: var(--color-alt);
+          color: black;
         }
       }
     }
   }
 
   nav.sub{
-    background-color: #1a1a22;
-    box-shadow: #0000008a 3px 3px 5px;
-
-    width: 100%;
+    // border-left: solid whitesmoke 2px;
+    // border-right: solid whitesmoke 2px;
+    width: var(--width-cont);
     // margin-bottom: .5rem;
 
     // position: fixed;

@@ -156,14 +156,16 @@ const PostEditor = () => {
           </>
           )}
        </Formik>
+
+       
+        {isAreYouSure && (
+          <StyledPopUp>
+            <h3>Abandon This Edit?</h3>
+            <button className='editBtn' onClick={() => abandonPost(_id)}> yeah, let's ditch this edit <FaSkullCrossbones /> </button>
+            <button className='editBtn' onClick={() => toggleAreYouSure()}> no, I want to keep editing<FaEject /> </button>
+          </StyledPopUp>
+        )}
       </section>
-      {isAreYouSure && (
-        <StyledPopUp>
-          <h3>Abandon This Edit?</h3>
-          <button className='editBtn' onClick={() => abandonPost(_id)}> yeah, let's ditch this edit <FaSkullCrossbones /> </button>
-          <button className='editBtn' onClick={() => toggleAreYouSure()}> no, I want to keep editing<FaEject /> </button>
-        </StyledPopUp>
-      )}
     </>
   )
 }

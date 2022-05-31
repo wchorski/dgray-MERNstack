@@ -5,6 +5,7 @@
   --color-highlight: #2a8db3;
   --color-alt: #59d199;
   --color-text: hsl(0, 0%, 100%);
+  --width-cont: 1800px;
 }
 
 * {
@@ -23,8 +24,12 @@ html {
 body {
     /* min-height: 100vh; */
     background-color: var(--color-base);
-    background-image: url("../public/tile/prism.png");
+    background-image: url("../public/tile/dark_geometric.png");
     background-repeat: repeat;
+}
+
+.body-container{
+  width: 100%;
 }
 ::-webkit-scrollbar {
   width: 10px; 
@@ -58,13 +63,17 @@ body {
 
 section {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--width-cont);
     min-height: 400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
     background-color: var(--color-base);
+}
+section.posts{
+  background-color: var(--color-highlight);
 }
 
 form {
@@ -220,7 +229,7 @@ ul{
 .createPost:hover{
   background-color: var(--color-alt);
   color: white;
-  border: dashed white;
+  border: dashed white 3px;
 }
 .createPost:hover span, .createPost:hover svg {
   color: white;
@@ -234,14 +243,14 @@ ul{
 }
 
 .editMe{
-  padding: .5rem;
-  outline: solid white 1px;
-  border-radius: 5px;
+  border: solid var(--color-highlight) 1px;
+      padding: .6rem;
+      border-radius: 10px;
 }
 .editMe:hover, editMe:focus{
   background-color: white;
-  color: blue;
-  outline: solid blue 1px;
+  color: var(--color-alt);
+  outline: solid var(--color-alt) 1px;
 }
 
 .peaceOut{
@@ -277,4 +286,8 @@ ul{
 .btnDelete:hover{
   background-color: red;
   color: white;
+}
+
+p.homies{
+  color: #2a8db366;
 }

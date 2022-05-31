@@ -18,8 +18,10 @@ const Admin = () => {
       <Navbar />
       {isCreateNew && (
         <>
+        <section>
           <UserCreate />
           <button onClick={() => setisCreateNew(false)}>Close <BsPlusSquare /></button>
+        </section>
         </>
       )}
       <section>

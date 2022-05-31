@@ -32,40 +32,43 @@ const Navbar = () => {
   return (
     <>
       <StyledNavBar>
-        <nav className="main">
-          <a href="/">
-            <img src={logo} className="App-logo" alt="logo" />
-          </a>
-          <ul>
-            <li><Link to="/"        > Home</Link></li>
-            {Cookies.get('role') === 'admin' || 'editor' || 'user'
-              ? <li><Link to="/posts"   > Posts</Link></li>
-              : null
-            }
-            {Cookies.get('role') === 'admin'
-              ? <li><Link to="/admin"   > Admin</Link></li>
-              : null
-            }
-      
-          </ul>
-        </nav>
+        <div className="nav-bg-main">
+          <nav className="main">
+            <a href="/">
+              <img src={logo} className="App-logo" alt="logo" />
+            </a>
+            <ul>
+              <li><Link to="/"        > Home</Link></li>
+              {Cookies.get('role') === 'admin' || 'editor' || 'user'
+                ? <li><Link to="/posts"   > Posts</Link></li>
+                : null
+              }
+              {Cookies.get('role') === 'admin'
+                ? <li><Link to="/admin"   > Admin</Link></li>
+                : null
+              }
+        
+            </ul>
+          </nav>
+        </div>
 
+        <div className="nav-bg-sub">
+          <nav className="sub">
+            <ul>
+              <li><input type="text" placeholder="search..."/> <button className="btnSearch"><BiSearchAlt /> </button></li>
+              {username 
+                ? 
+                  <li className='userCred'><RiUser5Line /> 
+                    <span> {username} </span> 
+                    <button onClick={signOut}><RiLogoutBoxRLine />logout</button>
+                  </li>
+                : 
+                  <Link to="/login" className="userCred">Login</Link>
 
-        <nav className="sub">
-          <ul>
-            <li><input type="text" placeholder="search..."/> <button className="btnSearch"><BiSearchAlt /> </button></li>
-            {username 
-              ? 
-                <li className='userCred'><RiUser5Line /> 
-                  <span> {username} </span> 
-                  <button onClick={signOut}><RiLogoutBoxRLine />logout</button>
-                </li>
-              : 
-                <Link to="/login" className="userCred">Login</Link>
-
-            }
-          </ul>
-        </nav>
+              }
+            </ul>
+          </nav>
+        </div>
       </StyledNavBar>
       
     </>
