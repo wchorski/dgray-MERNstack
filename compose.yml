@@ -1,0 +1,88 @@
+version: '3'
+
+services:
+
+  mongo:
+    restart: unless-stopped
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=myMongoUser
+      - MONGO_INITDB_ROOT_PASSWORD=myMongoPassword
+      - MONGO_INITDB_DATABASE=auth
+    volumes:
+      - ./db/mongo-db:/data/db
+    networks:
+      - dgray-network
+
+  server:
+    container_name: server
+    # hostname: server
+    restart: unless-stopped
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      # args:
+      #   NODE_ENV: production
+    ports:
+      - "4011:3001"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - PORT=4011 # MUST match with External port above ^
+      - DATABASE_URI=mongo # match with mongo container_name
+      - DATABASE_PORT=27017 # match with mongo container
+      - MONGO_USER=myMongoUser # match with mongo container
+      - MONGO_PASS=myMongoPassword # match with mongo container
+      - MONGODB_COLLECTION=dgrayCollection
+      - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
+      - ACCESS_TOKEN_SECRET=myAccessTokenSecret
+      - FRONTEND_URL_ORIGIN=http://localhost:3000
+    depends_on:
+      - mongo
+    networks:
+      - dgray-network
+
+  # nginx:
+  #   restart: always
+  #   depends_on:
+  #     - server
+  #     - client
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile.dev
+  #   ports:
+  #     - 4012:80
+  #   networks:
+  #     - dgray-network
+
+  # nginx built inside
+  client:
+    container_name: dgray-client
+    # hostname: dgray-client
+    restart: unless-stopped
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      # args:
+      #   NODE_ENV: production
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - 4010:80 # because nginx is inside this container too
+    environment:
+      - REACT_APP__API_IP=http://localhost
+      - REACT_APP__API_PORT=4011 #MUST match API external port. use 433 if https://
+    depends_on:
+      - server
+    networks:
+      - dgray-network
+      # add to ngnix-prox-mgmt network
+
+networks:
+  dgray-network:
+    driver: bridge
+
+volumes:
+  mongo-db:

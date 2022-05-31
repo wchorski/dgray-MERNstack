@@ -1,20 +1,19 @@
-FROM node:14
+FROM node:17 as build
 
 LABEL version="0.0.1"
 LABEL description="React Frontend for dgray tut "
 
 WORKDIR /app
-
 COPY . ./
 COPY ./package.json ./
 
-RUN mkdir -p /app/node_modules
-RUN chown node:node /app/node_modules
+RUN npm install --only=production
 
-RUN if [ "$NODE_ENV" = "development" ]; \
-  then npm install; \
-  else npm install --only=production; \
-  fi 
+RUN npm run build
 
+FROM nginx:1.21.6-alpine
+COPY --from=build /app/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf 
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
-CMD ["npm", "run", "start"] 
+CMD ["nginx", "-g", "daemon off;"]

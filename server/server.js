@@ -1,4 +1,7 @@
-require('dotenv').config();
+
+if(process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -72,9 +75,8 @@ mongoose.connection.once('open', () => {
 });
 
 // * default login if no users are found in db
-
 const defaultAdmin = require('./config/defaultAdmin')
 defaultAdmin()
-
+// * default posts if no posts are found in db
 const defaultPosts = require('./config/defaultPosts')
 defaultPosts()

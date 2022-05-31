@@ -4,15 +4,13 @@ const USER = process.env.MONGO_USER
 const PWD = process.env.MONGO_PASS
 const URI = process.env.DATABASE_URI
 const PORT = process.env.DATABASE_PORT
-
-// TODO Collection name with database in container
 const COLLECTION = process.env.MONGODB_COLLECTION
 
 const mongoURL = (USER !== 'localhost' ) 
   // TODO see if you can tag on collection this URL
-  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/${COLLECTION}/?authSource=admin`
-  : `mongodb://localhost:27017/${COLLECTION}`
-
+  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/${COLLECTION}?authSource=admin`
+  : `mongodb://localhost:${PORT}/${COLLECTION}`
+  
   console.log(mongoURL);
 
 const connectDB = async () => {

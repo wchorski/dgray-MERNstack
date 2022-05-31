@@ -42,7 +42,7 @@ services:
     restart: unless-stopped
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         NODE_ENV: development
     ports:
@@ -54,7 +54,7 @@ services:
       - PORT=3001 # MUST match with External port above ^
       - DATABASE_URI=mongo #match with mongo container_name
       - DATABASE_PORT=27017 #match with mongo container
-      - MONGO_USER=mymongouser #match with mongo container
+      - MONGO_USER=localhost #match with mongo container unless localhost
       - MONGO_PASS=mypassword #match with mongo container
       - MONGODB_COLLECTION=dgrayCollection
       - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
@@ -85,7 +85,7 @@ services:
     restart: unless-stopped
     build:
       context: ./client
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       args:
         NODE_ENV: development
     volumes:
