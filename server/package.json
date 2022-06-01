@@ -4,7 +4,7 @@
   "description": "MongoDB tutorial",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "dev": "concurrently \"nodemon server\" \"npm run client\" ",
     "devdoc": "nodemon --legacy-watch server",
     "client": "cd ../client && npm start"

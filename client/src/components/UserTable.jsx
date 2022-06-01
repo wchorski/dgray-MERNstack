@@ -25,7 +25,7 @@ export const UserTable = () => {
 
   const getUsers = async () => {
     try {
-      console.log('--- Users - getUsers.js');
+      // console.log('--- Users - getUsers.js');
       const response = await axiosPrivate.get('/users', {
         signal: controller.signal
       });
@@ -162,7 +162,7 @@ export const UserTable = () => {
                         <td {...cell.getCellProps()}> {cell.render('Cell')}</td>
                       )
                     })}
-                      {console.log(row.values)}
+                      {/* {console.log(row.values)} */}
                     <td><Link to={`/users/${row.values._id}`}> account </Link> </td>
                   </tr>
                 )

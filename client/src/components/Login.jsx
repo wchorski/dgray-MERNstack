@@ -8,6 +8,7 @@ import { useInput } from '../hooks/useInput';
 import { useToggle } from '../hooks/useToggle';
 
 import axios from '../api/axios';
+import { StyledMiniForm } from '../styles/MiniForm.styled';
 
 const Login = () => {
     const { setAuth } = useAuth();
@@ -75,8 +76,9 @@ const Login = () => {
     return (
 
 
-      <div className='content'>
+      <div className='content innerbody'>
         <section>
+          <StyledMiniForm>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <h1>Login</h1>
 
@@ -126,6 +128,7 @@ const Login = () => {
                 <br />
                 <Link to="/">Home</Link>
             </p>
+          </StyledMiniForm>
         </section>
       </div>
 

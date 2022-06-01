@@ -1,4 +1,7 @@
-FROM node:14
+FROM node:17 as build
+
+LABEL version="0.0.1"
+LABEL description="React Frontend for dgray tut "
 
 WORKDIR /app
 COPY package*.json ./

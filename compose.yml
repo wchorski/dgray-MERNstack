@@ -25,11 +25,11 @@ services:
       #   NODE_ENV: production
     ports:
       - "4011:3001"
-    volumes:
-      - ./server:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./server:/app
+    #   - /app/node_modules
     environment:
-      - PORT=4011 # MUST match with External port above ^
+      - PORT=3001 # MUST match with External port above ^
       - DATABASE_URI=mongo # match with mongo container_name
       - DATABASE_PORT=27017 # match with mongo container
       - MONGO_USER=myMongoUser # match with mongo container
@@ -37,7 +37,7 @@ services:
       - MONGODB_COLLECTION=dgrayCollection
       - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
       - ACCESS_TOKEN_SECRET=myAccessTokenSecret
-      - FRONTEND_URL_ORIGIN=http://localhost:3000
+      - FRONTEND_URL_ORIGIN=http://dgray-mernstack_client:4010
     depends_on:
       - mongo
     networks:
@@ -66,13 +66,13 @@ services:
       dockerfile: Dockerfile
       # args:
       #   NODE_ENV: production
-    volumes:
-      - ./client:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./client:/app
+    #   - /app/node_modules
     ports:
       - 4010:80 # because nginx is inside this container too
     environment:
-      - REACT_APP__API_IP=http://localhost
+      - REACT_APP__API_IP=http://dgray-mernstack_server
       - REACT_APP__API_PORT=4011 #MUST match API external port. use 433 if https://
     depends_on:
       - server

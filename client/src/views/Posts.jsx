@@ -38,10 +38,6 @@ const Posts = () => {
     }
   }
 
-  const goToPostSingle = (_id) => {
-    console.log('take me there: ' + _id);
-  }
-
   useEffect(() => {
 
     getPosts();
@@ -67,11 +63,11 @@ const Posts = () => {
         {/* //TODO this doesn't actually lock out info, just makes it convienent to read */}
         <StyledPostsList>
           {postsArray.slice().reverse().map((post) => (
-            <Link to={`/posts/${post._id}`}>
-              <article className='excerpt' key={post._id} onClick={goToPostSingle(post._id)}>
+            <Link to={`/posts/${post._id}`} key={post._id}>
+              <article className='excerpt'>
 
                 <Post {...post}/>
-                <Link to={`/posts/${post._id}`} className='readmore'> Read More... </Link> 
+                <p className='readmore'> Read More... </p> 
 
 
               </article>

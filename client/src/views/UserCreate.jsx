@@ -10,6 +10,7 @@ import { StyledUserAdminCreate } from '../styles/UserAdminCreate.styled'
 
 // import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from '../api/axios'
+import { StyledMiniForm } from '../styles/MiniForm.styled'
 
 const ROLES = {
   'Admin': 5150,
@@ -85,6 +86,7 @@ const UserCreate = () => {
   return (
     <>
       <section>
+      <StyledMiniForm>
        <h2>Create New User</h2>  
        <Formik
         enableReinitialize
@@ -161,6 +163,7 @@ const UserCreate = () => {
           </>
           )}
        </Formik>
+      </StyledMiniForm>            
       </section>
     </>
   )

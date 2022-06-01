@@ -6,12 +6,9 @@ const URI = process.env.DATABASE_URI
 const PORT = process.env.DATABASE_PORT
 const COLLECTION = process.env.MONGODB_COLLECTION
 
-const mongoURL = (USER !== 'localhost' ) 
-  // TODO see if you can tag on collection this URL
-  ? `mongodb://${USER}:${PWD}@${URI}:${PORT}/${COLLECTION}?authSource=admin`
-  : `mongodb://localhost:${PORT}/${COLLECTION}`
-  
-  console.log(mongoURL);
+const mongoURL = (USER === 'localhost' || USER === 'undefined' ) 
+  ? `mongodb://localhost:${PORT}/${COLLECTION}`
+  : `mongodb://${USER}:${PWD}@${URI}:${PORT}/${COLLECTION}?authSource=admin`
 
 const connectDB = async () => {
   try {

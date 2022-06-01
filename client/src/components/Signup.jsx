@@ -4,6 +4,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from '../api/axios';
+import { StyledMiniForm } from "../styles/MiniForm.styled";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -112,6 +113,7 @@ const Register = () => {
               </section>
           ) : (
               <section>
+                <StyledMiniForm>
                   <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                   <h1>Signup</h1>
                   <form onSubmit={handleSubmit} className='popUp'>
@@ -219,6 +221,7 @@ const Register = () => {
                           <Link to="/login">Login</Link>
                       </span>
                   </p>
+                </StyledMiniForm>
               </section>
           )}
       </div>

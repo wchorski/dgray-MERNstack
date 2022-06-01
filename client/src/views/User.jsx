@@ -29,12 +29,12 @@ export const User = () => {
       const response = await axiosPrivate.get(`/users/${_id}`, {
         signal: controller.signal
       })
-      console.log(response.data);
+      // console.log(response.data);
       setuserState(response.data);
       setIsLoading(false)
 
     } catch (err) {
-      console.log('---getUser failed');
+      console.error('---getUser failed');
       console.error(err);
       navigate('/admin', { state: { from: location }, replace: true });
     }
@@ -49,7 +49,7 @@ export const User = () => {
 
       })
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
 

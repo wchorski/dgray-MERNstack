@@ -103,6 +103,9 @@ textarea {
   z-index: 100;
   cursor: pointer;
 }
+input{
+  background-color: rgba(255, 255, 255, 0.786);
+}
 
 label,
 button {
@@ -288,7 +291,7 @@ ul{
   color: white;
 }
 
-p.homies{
+.homies{
   color: #2a8db366;
-  font-size: 30px;
+  font-size: 80px;
 }

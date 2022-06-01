@@ -3,26 +3,28 @@ import styled from 'styled-components'
 
 export const StyledNavBar = styled.div`
   width: 100%;
-  // background-color: rgb(35, 35, 47);
-  background-color: blue;
+  background-color: #1a1a22;
   position: sticky;
   top: 0rem;
   margin-bottom: 1rem;
   z-index: 500;
 
   .nav-bg-main{
-    background-color: red;
     background-color: rgb(35, 35, 47);
-    width: 100%;
+    // width: 100%;
+    max-width: var(--width-cont);
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
+    justify-content: flex-start;
   }
   .nav-bg-sub{
-    background-color: green;
     background-color: #1a1a22;
     box-shadow: #0000008a 3px 3px 5px;
+    max-width: var(--width-cont);
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
@@ -32,7 +34,8 @@ export const StyledNavBar = styled.div`
   nav.main{
     // border-left: solid whitesmoke 2px;
     // border-right: solid whitesmoke 2px;
-    width: var(--width-cont);
+    
+    // margin: 0 auto;
     display: flex;
     align-items: center;
   
@@ -41,8 +44,9 @@ export const StyledNavBar = styled.div`
     }
   
     .App-logo{
-      padding: .1rem;
-      width: 50px;
+      padding: .4rem;
+      width: 70px;
+
   
       &:hover{
         opacity: .6;
@@ -83,8 +87,9 @@ export const StyledNavBar = styled.div`
   nav.sub{
     // border-left: solid whitesmoke 2px;
     // border-right: solid whitesmoke 2px;
-    width: var(--width-cont);
+    // width: var(--width-cont);
     // margin-bottom: .5rem;
+    margin-left: auto;
 
     // position: fixed;
     top: 3.4rem;
