@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB
 connectDB();
-app.set("trust proxy", 1);
+app.enable("trust proxy", 1);
 
 // custom middleware logger
 app.use(logger);
