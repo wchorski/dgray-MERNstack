@@ -31,6 +31,7 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # ⚙ Development Setup Checklist
 0. i run <a href="https://www.mongodb.com/try/download/community">MongoDB Community Edition</a> locally on my machine and tap into it with <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass</a> 
+0. add in `require('dotenv').config();` at the top of `./server/server.js`
 0. allow multiple frontend domains in `allowedOrigins.js` (docker compose env variable gets added automatically)
 0. node dev environment `cd ./server` `npm run dev` will kick up express and react at the same time.
 0. you could run a dev environment in docker with `dev.sh` but I don't recommend it.
@@ -38,6 +39,8 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 <br/>
 
 # ⚙ Production Setup Checklist
+0. copy `compose.example.yml` to `compose.yml` and configure *SECURE* variables
+0. comment out `require('dotenv').config();` at the top of `./server/server.js`
 0. change `./client/.env` with prod variables
 0. edit all `environment:` variables in `compose.yml`
 0. `docker compose up -d --build`
@@ -46,15 +49,15 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # 🌠 Feature Wish List
 <details>
-  <summary>
+  <summary>List 1</summary>
 
-  - [ ] make a solid `compose.yml` for production. ditch docker dev env
-  - [ ] add CSSTransitions
-  - [ ] dark / light mode with cookie
-  - [ ] make content and nav restricted to ~1200px screen width. but have color expand the whole page. 
-  - [ ] think mobile
-  - [ ] nav that folds up on scroll up, and comes back on scroll down (maybe just for mobile?)
-  - [ ] footer?
+    + make a solid `compose.yml` for production. ditch docker dev env
+    + add CSSTransitions
+    + dark / light mode with cookie
+    + make content and nav restricted to ~1200px screen width. but have color expand the whole page. 
+    + think mobile
+    + nav that folds up on scroll up, and comes back on scroll down (maybe just for mobile?)
+    + footer?
   ### posts
   - [x] date created on post model
   - [ ] date modified on post model
@@ -76,12 +79,11 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
   - [x] Admin able to edit user Roles
   - [x] inject inital Admin in the db on a fresh install
   - [ ] save currently edited Post data form as cookie (when an Editor leaves the page and tries to come back to edit)
+  - [ ] use reportWebVitals(console.log()) to create dashboard of web traffic stats
   - [ ] Modern editor that superimposes itself on the 'PostSingle.jsx' page
   - [ ] tool tips. tool tips everywhere
   - [ ] make search queary filter users table
   - [ ] color picker for background & highlight color
   ### server
   - [x] add `allowedOrigins.js` variable to .env for easy config
-
-  </summary>
 </details>

@@ -1,6 +1,7 @@
 db/mongo-db
 .env
 */build
+compose.yml
 
 # Logs
 logs

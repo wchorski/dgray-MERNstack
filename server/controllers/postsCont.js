@@ -7,7 +7,7 @@ exports.getAllPosts = async (req, res) => {
 }
 
 exports.getPost = async (req, res) => {
-  console.log('--getpost');
+  // console.log('--getpost');
   try{
     const post = await Post.findById(req.params.id)
 
@@ -35,7 +35,7 @@ exports.createPost = async (req, res, next) => {
     })
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed POST catch createPost',})
   }
 }
@@ -48,7 +48,7 @@ exports.update = async (req, res, next) => {
     post.save()
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed to update post', message: err.toString()})
   }
 }
@@ -63,7 +63,7 @@ exports.deletePost = async (req, res) => {
     })
 
   } catch (err){
-    console.log(err);
+    console.error(err);
     res.status(400).json({status: 'failed post deletion',})
   }
 }
