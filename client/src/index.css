@@ -24,7 +24,9 @@ html {
 body {
     /* min-height: 100vh; */
     background-color: var(--color-base);
-    background-image: url("../public/tile/dark_geometric.png");
+    background-image:
+      linear-gradient(0deg, rgba(1, 3, 23, 0.453), rgba(7, 12, 44, 0.163)), 
+      url("../public/tile/dark_geometric.png");
     background-repeat: repeat;
 }
 

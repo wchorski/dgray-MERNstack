@@ -39,9 +39,9 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 <br/>
 
 # ⚙ Production Setup Checklist
+0. change `./client/.env` with prod variables
 0. copy `compose.example.yml` to `compose.yml` and configure *SECURE* variables
 0. comment out `require('dotenv').config();` at the top of `./server/server.js`
-0. change `./client/.env` with prod variables
 0. edit all `environment:` variables in `compose.yml`
 0. `docker compose up -d --build`
 0. `docker compose down --remove-orphans`

@@ -35,6 +35,11 @@ const Home = (props, req, res) => {
                     <ImGithub style={{marginRight: "1rem", fontSize: "60px"}}/>
                     https://github.com/wchorski/dgray-MERNstack
           </a></span>
+          <span> <a href="https://github.com/wchorski/dgray-MERNstack/blob/main/server/config/defaultUsers.json">
+                    <ImGithub style={{marginRight: "1rem", fontSize: "60px"}}/>
+                    Login info: 
+                    https://github.com/wchorski/dgray-MERNstack
+          </a></span>
         <br />
         <br />
         <Jokes />

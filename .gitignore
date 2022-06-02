@@ -1,7 +1,8 @@
-db/mongo-db
+db/*
 .env
 */build
 compose.yml
+.DS_Store
 
 # Logs
 logs

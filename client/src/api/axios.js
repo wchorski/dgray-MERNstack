@@ -4,7 +4,7 @@ const API_IP = process.env.REACT_APP__API_IP;
 const API_PORT = process.env.REACT_APP__API_PORT;
 
 const BASE_URL = (API_IP === 'http://localhost' || API_IP === 'undefined' )
-  ? `http://localhost:3001`
+  ? `http://localhost:${API_PORT}`
   : `${API_IP}:${API_PORT}`
 // const BASE_URL = `${process.env.REACT_APP__API_IP}:${process.env.REACT_APP__API_PORT}`
 
