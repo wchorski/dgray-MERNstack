@@ -1,7 +1,11 @@
 
-if(process.env.NODE_ENV === 'development') {
+if(!process.env.NODE_ENV) {
   require('dotenv').config();
+  console.log('***** dotenv: ' + process.env.NODE_ENV);
+} else {
+  console.log('**** dotenv: ' + process.env.NODE_ENV);
 }
+
 const express = require('express');
 const app = express();
 const path = require('path');

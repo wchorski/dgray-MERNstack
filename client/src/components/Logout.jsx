@@ -18,9 +18,13 @@ const Logout = () => {
 
   return (
     <>
-      <div>You're Logged out</div>
-      <FaRegHandPeace className='peaceOut'/>
-      <Link to="/" > Back to Homepage </Link>
+    <div className="innerbody">
+      <section>
+        <div>You're Logged out</div>
+        <FaRegHandPeace className='peaceOut'/>
+        <Link to="/" > Back to Homepage </Link>
+      </section>
+    </div>
     </>
   )
 }

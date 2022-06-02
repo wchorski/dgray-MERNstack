@@ -35,9 +35,9 @@ services:
       - MONGO_USER=myMongoUser # match with mongo container
       - MONGO_PASS=myMongoPassword # match with mongo container
       - MONGODB_COLLECTION=dgrayCollection
-      - REFRESH_TOKEN_SECRET=myRefreshTokenSecret
-      - ACCESS_TOKEN_SECRET=myAccessTokenSecret
-      - FRONTEND_URL_ORIGIN=http://dgray-mernstack_client:4010
+      - REFRESH_TOKEN_SECRET=myRefreshTokenSecret # mash your keyboard - can't use $
+      - ACCESS_TOKEN_SECRET=myAccessTokenSecret # mash your keyboard - can't use $
+      - FRONTEND_URL_ORIGIN=http://dgray-mernstack_client
     depends_on:
       - mongo
     networks:

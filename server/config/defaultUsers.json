@@ -1,5 +1,5 @@
 [
-  {  "email": "admin@example.com",  "username": "User01",  "roles": { "Admin": 5150,    "Editor": 1984,    "User": 2001  },   "password": "SamusAran_isaMetroid" },
-  {  "email": "editor@example.com", "username": "User03",  "roles": {  "Editor": 1984, "User": 2001  },                     "password": "editThi$post" },
-  {  "email": "user@example.com",   "username": "User02",  "roles": { "User": 2001  },                                        "password": "Look@posts"}
+  {  "email": "admin@example.com",  "username": "Adam",  "roles": { "Admin": 5150,    "Editor": 1984,    "User": 2001  },   "password": "SamusAran_isaMetroid" },
+  {  "email": "editor@example.com", "username": "Eddie",  "roles": {  "Editor": 1984, "User": 2001  },                     "password": "editThi$post" },
+  {  "email": "user@example.com",   "username": "Ulga",  "roles": { "User": 2001  },                                        "password": "Look@posts"}
 ]
