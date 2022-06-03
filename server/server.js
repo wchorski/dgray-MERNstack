@@ -23,11 +23,11 @@ const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB
 connectDB();
-// app.enable("trust proxy", 1);
-app.set('trust proxy', (ip) => {
-  if (ip === '127.0.0.1' || ip === '192.168.0.100') return true // trusted IPs
-  else return false
-})
+app.set("trust proxy", 1);
+// app.set('trust proxy', (ip) => {
+//   if (ip === '127.0.0.1' || ip === '192.168.0.100') return true // trusted IPs
+//   else return false
+// })
 
 // custom middleware logger
 app.use(logger);
