@@ -5,8 +5,9 @@ https://www.youtube.com/watch?v=fUWkVxCv4IQ
 https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # 🖱 LIVE SITE
-<a src="https://nodeadmin.williamusic.com/">Node Admin: https://nodeadmin.williamusic.com/</a>
-<iframe src="https://nodeadmin.williamusic.com/" width="400" height="200"></iframe>
+<a src="https://nodeadmin.williamusic.com/">https://nodeadmin.williamusic.com</a>
+
+<iframe src="https://nodeadmin.williamusic.com"></iframe>
 
 
 # ⚒ Features 
