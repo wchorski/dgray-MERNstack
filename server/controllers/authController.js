@@ -41,7 +41,7 @@ const handleLogin = async (req, res) => {
         foundUser.refreshToken = refreshToken;
         const result = await foundUser.save();
         console.log(result);
-        console.log(roles);
+        // console.log(roles);
 
         // Creates Secure Cookie with refresh token
         res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
@@ -56,7 +56,7 @@ const handleLogin = async (req, res) => {
               case ROLES_LIST.Editor:
                 return  rl = 'editor';
               case ROLES_LIST.User:
-                console.log('user is a USER');
+                // console.log('user is a USER');
                 return rl = 'user';
               default:
                 return rl = 'non-user';

@@ -74,8 +74,9 @@ services:
     ports:
       - 4020:80 # because nginx is inside this container too
     environment:
-      - REACT_APP__API_IP=https://nodeaapi.williamusic.com # Nginx Prox Mgmt does not lie "_" in domain
+      - REACT_APP__API_IP=https://nodeadmin.williamusic.com # Nginx Prox Mgmt does not lie "_" in domain
       - REACT_APP__API_PORT=443 # MUST match API external port. use 433 if https://
+      - REACT_APP__API_FOLDER=/api
     depends_on:
       - server
     networks:

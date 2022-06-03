@@ -31,7 +31,9 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # ⚙ Development Setup Checklist
 0. i run <a href="https://www.mongodb.com/try/download/community">MongoDB Community Edition</a> locally on my machine and tap into it with <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass</a> 
-0. add in `require('dotenv').config();` at the top of `./server/server.js`
+0. copy `./server/.env.dev` to `./server/.env`
+0. copy `./client/.env.dev` to `./client/.env`
+<!-- 0. add in `require('dotenv').config();` at the top of `./server/server.js` -->
 0. allow multiple frontend domains in `allowedOrigins.js` (docker compose env variable gets added automatically)
 0. node dev environment `cd ./server` `npm run dev` will kick up express and react at the same time.
 0. you could run a dev environment in docker with `dev.sh` but I don't recommend it.
@@ -39,18 +41,27 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 <br/>
 
 # ⚙ Production Setup Checklist
-0. change `./client/.env` with prod variables
+0. copy `./client/.env.dev` to `./client/.env`
+0. change `./client/.env` with your prod variables
 0. copy `compose.example.yml` to `compose.yml` and configure *SECURE* variables
 0. comment out `require('dotenv').config();` at the top of `./server/server.js`
 0. edit all `environment:` variables in `compose.yml`
 0. `docker compose up -d --build`
 0. `docker compose down --remove-orphans`
+
+## Nginx Proxy Manager setup
+0. setup proxy host. example `app.mywebsite.com`
+0. 'Details' tab -> host name is local IP and port is *client's* external Port in `compose.yml`
+0. 'Custom location' tab -> API server set here 'location' set as `/api/`
+0. ^ 'forward hostname/IP' = `192.168.0.100/` | 'forward port' = *server's* external Port`compose.yml`
+
+<img src="/README/nodeadmin-nginx-setup-1.PNG">
+<img src="/README/nodeadmin-nginx-setup-2.JPG">
 <br/>
 
 # 🌠 Feature Wish List
 <details>
   <summary>List 1</summary>
-
     + make a solid `compose.yml` for production. ditch docker dev env
     + add CSSTransitions
     + dark / light mode with cookie
@@ -86,4 +97,5 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
   - [ ] color picker for background & highlight color
   ### server
   - [x] add `allowedOrigins.js` variable to .env for easy config
+  - [ ] see if hosting API on a seperate domain will work with cookies
 </details>
