@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=myMongoUser
-      - MONGO_INITDB_ROOT_PASSWORD=myMongoPassword
+      - MONGO_INITDB_ROOT_USERNAME=<username>
+      - MONGO_INITDB_ROOT_PASSWORD=<password>
       - MONGO_INITDB_DATABASE=auth
     volumes:
       - ./db/mongo-db:/data/db
@@ -33,11 +33,11 @@ services:
       - PORT=3001 # MUST match with External port above ^
       - DATABASE_URI=mongo # match with mongo container_name
       - DATABASE_PORT=27017 # match with mongo container
-      - MONGO_USER=myMongoUser # match with mongo container
-      - MONGO_PASS=myMongoPassword # match with mongo container
+      - MONGO_USER=<username> # match with mongo container
+      - MONGO_PASS=<password> # match with mongo container
       - MONGODB_COLLECTION=dgrayCollection
-      - REFRESH_TOKEN_SECRET=bdfb34h5n56h5v45b^v4v34b*b345b3s(eb
-      - ACCESS_TOKEN_SECRET=23v234b68m679,*vQWV3#W345N%GDF&*23BG
+      - REFRESH_TOKEN_SECRET=<secrethash>
+      - ACCESS_TOKEN_SECRET=<secrethash>
       - FRONTEND_URL_ORIGIN=https://nodeadmin.williamusic.com
       - FRONTEND_URL_PORT=443 # if using SSL = 443
     depends_on:
@@ -74,7 +74,7 @@ services:
     ports:
       - 4020:80 # because nginx is inside this container too
     environment:
-      - REACT_APP__API_IP=https://nodeaapi.williamusic.com # Nginx Prox Mgmt does not lie "_" in domain
+      - REACT_APP__API_IP=https://api.williamusic.com
       - REACT_APP__API_PORT=443 # MUST match API external port. use 433 if https://
     depends_on:
       - server
