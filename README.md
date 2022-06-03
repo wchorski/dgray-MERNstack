@@ -33,21 +33,16 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 0. i run <a href="https://www.mongodb.com/try/download/community">MongoDB Community Edition</a> locally on my machine and tap into it with <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass</a> 
 0. copy `./server/.env.dev` to `./server/.env`
 0. copy `./client/.env.dev` to `./client/.env`
-<!-- 0. add in `require('dotenv').config();` at the top of `./server/server.js` -->
 0. allow multiple frontend domains in `allowedOrigins.js` (docker compose env variable gets added automatically)
 0. node dev environment `cd ./server` `npm run dev` will kick up express and react at the same time.
-0. you could run a dev environment in docker with `dev.sh` but I don't recommend it.
-0. all dev env variables live in `./server/.env` & `./client/.env` (production variables are setup via compose)
+0. you could run a dev environment in *docker* with `dev.sh` but I don't recommend it.
 <br/>
 
 # ⚙ Production Setup Checklist
-0. copy `./client/.env.dev` to `./client/.env`
-0. change `./client/.env` with your prod variables
-0. copy `compose.example.yml` to `compose.yml` and configure *SECURE* variables
-0. comment out `require('dotenv').config();` at the top of `./server/server.js`
-0. edit all `environment:` variables in `compose.yml`
-0. `docker compose up -d --build`
-0. `docker compose down --remove-orphans`
+0. copy and edit`./client/.env.prod` to `./client/.env`
+0. copy `compose.example.yml` to `compose.yml` and configure *SECURE* `environment: ` variables
+0. *client's* variables still set in `./client/.env`
+0. `docker compose up -d --build` | `docker compose down --remove-orphans` to take everything down
 
 ## Nginx Proxy Manager setup
 0. setup proxy host. example `app.mywebsite.com`
@@ -61,7 +56,8 @@ https://www.youtube.com/watch?v=RVFAyFWO4go
 
 # 🌠 Feature Wish List
 <details>
-  <summary>List 1</summary>
+  <summary>List 1</summary> <br/>
+
     + make a solid `compose.yml` for production. ditch docker dev env
     + add CSSTransitions
     + dark / light mode with cookie
